@@ -27,6 +27,15 @@ export function AboutPhoto({ className = '' }) {
 
 export function LogoImage({ light = false, className = '' }) {
   return (
-    <img className={className} src={asset(light ? 'logo-light.png' : 'logo.png')} width="900" height="290" alt="" />
+    <img className={className} src={asset(light ? 'logo-light.png' : 'logo.png')} width="480" height="155" alt=""
+      loading={light ? 'lazy' : undefined} decoding="async" />
   );
+}
+
+/** Reviewer portrait (sample). Falls back to the reviewer's initial when no file is set. */
+export function Avatar({ name, file, className = '' }) {
+  if (!file) {
+    return <span aria-hidden="true" className={`grid size-11 place-items-center rounded-full bg-brand font-display font-bold ${className}`}>{name[0]}</span>;
+  }
+  return <img className={`size-11 rounded-full object-cover ${className}`} src={asset(`avatars/${file}.jpg`)} width="160" height="160" alt="" loading="lazy" decoding="async" />;
 }

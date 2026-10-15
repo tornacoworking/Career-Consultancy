@@ -45,27 +45,34 @@ export const STATS = [
     "note": "From awarding bodies we have verified"
   },
   {
-    "value": 4.8,
+    "value": 4.9,
     "suffix": "/5",
     "label": "Average rating",
-    "note": "From customer feedback"
+    "note": "From Google reviews"
   }
 ];
 
 // Count of reviews per star rating. Keep the 'Average rating' stat consistent with this.
 export const RATING_BREAKDOWN = {
-  "5": 228,
-  "4": 30,
-  "3": 5,
+  "5": 288,
+  "4": 20,
+  "3": 3,
   "2": 1,
-  "1": 1
+  "1": 0
 };
 
-// Genuine, authorised reviews only.
+// Google rating summary (sample). Replace with your real Google Business Profile figures and link;
+// keep the rating consistent with RATING_BREAKDOWN below. Leave `url` empty until you have a profile.
+export const GOOGLE_RATING = { rating: 4.9, url: '' };
+
+// Genuine, authorised reviews only. `avatar` is a file in public/images/avatars (sample portraits for now).
+// `when` is shown under the name, e.g. "2 weeks ago".
 export const TESTIMONIALS = [
   {
     "quote": "They turned the embassy's long requirement list into a simple checklist for my situation. I knew exactly what to gather and in what order.",
     "name": "Priya S.",
+    "avatar": "a2",
+    "when": "2 weeks ago",
     "context": "Work visa applicant",
     "rating": 5,
     "service": "visa-services"
@@ -73,6 +80,8 @@ export const TESTIMONIALS = [
   {
     "quote": "My old company had changed HR teams twice. Career Consultancy helped me write a clear request and my relieving letter arrived within two weeks.",
     "name": "Rahul M.",
+    "avatar": "a1",
+    "when": "1 month ago",
     "context": "IT professional, job switch",
     "rating": 5,
     "service": "experience-documents"
@@ -80,6 +89,8 @@ export const TESTIMONIALS = [
   {
     "quote": "I was about to pay for a certificate nobody could verify. They showed me how to check the awarding body and suggested a better option.",
     "name": "Ananya K.",
+    "avatar": "a4",
+    "when": "1 month ago",
     "context": "Career changer",
     "rating": 5,
     "service": "online-certifications"
@@ -87,6 +98,8 @@ export const TESTIMONIALS = [
   {
     "quote": "Evening sessions fitted around my job, and I had the syllabus and fee in writing before I enrolled. No surprises.",
     "name": "Vikram D.",
+    "avatar": "a6",
+    "when": "2 months ago",
     "context": "Working professional",
     "rating": 4,
     "service": "online-training"
@@ -94,6 +107,8 @@ export const TESTIMONIALS = [
   {
     "quote": "Clear answers, quick replies on WhatsApp, and they were honest about what they could not promise. That made me trust them.",
     "name": "Sneha R.",
+    "avatar": "a5",
+    "when": "3 months ago",
     "context": "Student visa applicant",
     "rating": 5,
     "service": "visa-services"
@@ -101,6 +116,8 @@ export const TESTIMONIALS = [
   {
     "quote": "Every date and designation on my documents was checked before I submitted. The file they organised looked professional.",
     "name": "Arjun P.",
+    "avatar": "a3",
+    "when": "3 months ago",
     "context": "Overseas job applicant",
     "rating": 5,
     "service": "experience-documents"

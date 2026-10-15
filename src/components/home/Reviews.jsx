@@ -2,7 +2,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Arrow, SampleBadge, SectionHead, Stars } from '../ui.jsx';
 import { Link } from '../../lib/router.jsx';
-import { RATING_BREAKDOWN, SAMPLE_DATA, TESTIMONIALS } from '../../data/site.js';
+import { GOOGLE_RATING, RATING_BREAKDOWN, SAMPLE_DATA, TESTIMONIALS } from '../../data/site.js';
+import { Avatar } from '../Photo.jsx';
 import { SERVICE_BY_SLUG, serviceUrl } from '../../data/services.js';
 
 export default function Reviews() {
@@ -10,6 +11,7 @@ export default function Reviews() {
   const [edges, setEdges] = useState({ start: true, end: false });
   const total = Object.values(RATING_BREAKDOWN).reduce((a, b) => a + b, 0);
   const avg = total ? Object.entries(RATING_BREAKDOWN).reduce((a, [k, v]) => a + k * v, 0) / total : 0;
+  const shown = Math.round(avg * 10) / 10 || GOOGLE_RATING.rating;
 
   useEffect(() => {
     const el = track.current;
@@ -34,10 +36,10 @@ export default function Reviews() {
           </SectionHead>
           <div className="grid grid-cols-1 items-center justify-items-center gap-x-6 gap-y-1 border border-line bg-white p-6 text-center sm:grid-cols-[auto_minmax(0,1fr)] sm:justify-items-start sm:text-left">
             <p className="font-display text-[4rem] leading-none font-extrabold tracking-[-0.05em] sm:row-span-2">
-              {avg.toFixed(1)}<span className="text-xl tracking-normal text-muted">/5</span>
+              {shown.toFixed(1)}<span className="text-xl tracking-normal text-muted">/5</span>
             </p>
-            <Stars rating={avg} size="text-2xl" />
-            <p className="text-[.9375rem] text-muted">Based on {total} reviews</p>
+            <Stars rating={shown} size="text-2xl" />
+            <p className="text-[.9375rem] text-muted">Google rating · {total} reviews</p>
             <ul className="col-span-full mt-4 grid w-full gap-1.5" aria-label="Rating breakdown">
               {[5, 4, 3, 2, 1].map((k) => (
                 <li key={k} className="grid grid-cols-[1rem_minmax(0,1fr)_2.5rem] items-center gap-3 font-mono text-[.8125rem]">
@@ -61,8 +63,8 @@ export default function Reviews() {
                 <p><span className="mr-0.5 font-display text-[1.5em] leading-none font-extrabold text-brand-ink" aria-hidden="true">“</span>{t.quote}</p>
               </blockquote>
               <div className="grid w-full grid-cols-1 items-center justify-items-center gap-x-3 gap-y-1 border-t border-line pt-4 lg:grid-cols-[auto_minmax(0,1fr)] lg:justify-items-start">
-                <span aria-hidden="true" className="grid size-10 place-items-center rounded-full bg-brand font-display font-bold lg:row-span-2">{t.name[0]}</span>
-                <p className="grid text-[.9375rem]"><strong>{t.name}</strong><span className="text-muted">{t.context}</span></p>
+                <Avatar name={t.name} file={t.avatar} className="lg:row-span-2" />
+                <p className="grid text-[.9375rem]"><strong>{t.name}</strong><span className="text-muted">{t.context}{t.when ? ` · ${t.when}` : ''}</span></p>
                 <Link to={serviceUrl(t.service)} className="font-mono text-[.8125rem] text-brand-ink no-underline hover:underline lg:col-start-2">
                   {SERVICE_BY_SLUG[t.service].name}
                 </Link>
@@ -79,6 +81,23 @@ export default function Reviews() {
             </button>
           ))}
           <Link className="text-link basis-full justify-center lg:ml-auto lg:basis-auto" to="/feedback/">Share your feedback <Arrow /></Link>
+        </div>
+
+        <div className="mt-[clamp(2rem,4vw,3rem)] grid items-center gap-5 border border-ink bg-white p-[clamp(1.25rem,3vw,2rem)] text-center md:grid-cols-[minmax(0,1fr)_auto] md:text-left">
+          <div className="grid gap-1.5">
+            <h3 className="font-display text-title leading-tight font-bold tracking-[-0.02em]">Used our service? Tell us how it went.</h3>
+            <p className="text-muted">Tap a star to start. It takes about a minute, and we read every response.</p>
+          </div>
+          <ul className="flex justify-center gap-1.5 md:justify-end" aria-label="Rate your experience">
+            {[1, 2, 3, 4, 5].map((n) => (
+              <li key={n}>
+                <Link to={`/feedback/?rating=${n}`} aria-label={`${n} star${n > 1 ? 's' : ''}`}
+                  className="group grid size-12 place-items-center rounded-full border-[1.5px] border-line-strong text-xl text-line-strong no-underline transition-colors hover:border-ink hover:bg-brand hover:text-ink">
+                  <span aria-hidden="true">★</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

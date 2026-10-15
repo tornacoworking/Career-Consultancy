@@ -1,4 +1,5 @@
 import { HeroPhoto } from '../Photo.jsx';
+import HeroReadiness from './HeroReadiness.jsx';
 import { Arrow, ButtonLink, Eyebrow } from '../ui.jsx';
 import { Link } from '../../lib/router.jsx';
 import { SITE } from '../../data/site.js';
@@ -21,9 +22,12 @@ export default function Hero() {
             <ButtonLink to="/contact/#enquiry" variant="ghost">Get Assistance</ButtonLink>
           </div>
         </div>
-        <figure className="mx-auto w-full max-w-[560px] min-w-0">
-          <HeroPhoto className="h-auto w-full rounded-brand object-cover" />
-        </figure>
+        <div className="relative mx-auto w-full max-w-[560px] min-w-0">
+          <figure>
+            <HeroPhoto className="h-auto w-full rounded-brand object-cover" />
+          </figure>
+          <HeroReadiness />
+        </div>
       </div>
       <div className="wrap">
         <ul className="mt-[clamp(2.5rem,5vw,4rem)] grid grid-cols-[repeat(auto-fit,minmax(min(100%,230px),1fr))] border-t border-ink" aria-label="Our services">

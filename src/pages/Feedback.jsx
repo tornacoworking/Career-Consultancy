@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import PageHero from '../components/PageHero.jsx';
 import { ButtonLink } from '../components/ui.jsx';
 import { CheckField, ErrorSummary, Field, Honeypot, StatusMessage, SubmitButton, describe } from '../components/FormBits.jsx';
-import { Link } from '../lib/router.jsx';
+import { Link, useLocation } from '../lib/router.jsx';
 import { failureReason, sendForm } from '../lib/sendForm.js';
 import { SITE } from '../data/site.js';
 import { SERVICES, SERVICE_BY_SLUG } from '../data/services.js';
@@ -32,7 +32,12 @@ export default function Feedback() {
   const summaryRef = useRef(null);
   const successRef = useRef(null);
 
-  useEffect(() => { started.current = Date.now(); }, []);
+  const { search } = useLocation();
+  useEffect(() => {
+    started.current = Date.now();
+    const r = Number(new URLSearchParams(search).get('rating'));
+    if (Number.isInteger(r) && r >= 1 && r <= 5) setV((o) => ({ ...o, rating: r }));
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { if (sent) successRef.current?.focus(); }, [sent]);
 
   const set = (k, cast = (x) => x) => (e) => {
