@@ -1,0 +1,53 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Branch deploys and deploy previews must never be indexed
+[context.deploy-preview]
+  command = "npm run build:staging"
+[context.branch-deploy]
+  command = "npm run build:staging"
+
+[functions]
+  directory = "netlify/functions"
+
+[[redirects]]
+  from = "/api/feedback"
+  to = "/.netlify/functions/feedback"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/enquiry"
+  to = "/.netlify/functions/enquiry"
+  status = 200
+  force = true
+
+# Example permanent redirect pattern (add old URLs here if the site replaces an older one)
+# [[redirects]]
+#   from = "/visa"
+#   to = "/services/visa-services/"
+#   status = 301
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; frame-ancestors 'none'; base-uri 'self'"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
