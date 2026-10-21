@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from '../lib/router.jsx';
 import { LogoImage } from './Photo.jsx';
+import ConsultLink from './ConsultLink.jsx';
 import { SITE } from '../data/site.js';
 
 export const NAV = [
   ['Home', '/'],
   ['Services', '/services/'],
+  ['Cities', '/cities/'],
   ['About Us', '/about/'],
   ['How It Works', '/#how-it-works'],
   ['FAQs', '/faqs/'],
@@ -52,7 +54,7 @@ export default function Header() {
     return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('click', onClick); };
   }, [open]);
 
-  const isCurrent = (href) => href === pathname || (href === '/services/' && pathname.startsWith('/services/'));
+  const isCurrent = (href) => href === pathname || ((href !== '/' && href.endsWith('/') && pathname.startsWith(href)));
 
   return (
     <header className={`sticky top-[env(safe-area-inset-top,0px)] z-50 border-b bg-white transition-[border-color,box-shadow] duration-200 ${scrolled ? 'border-line shadow-[0_6px_24px_-18px_rgba(25,25,25,.4)]' : 'border-transparent'}`}>
@@ -75,9 +77,9 @@ export default function Header() {
           </ul>
         </nav>
         <div className="ml-auto flex items-center gap-1 sm:gap-2 lg:ml-0">
-          <Link to="/contact/#enquiry" className="btn btn-primary btn-sm">
-            <span className="max-[400px]:hidden">Get Assistance</span><span className="hidden max-[400px]:inline">Enquire</span>
-          </Link>
+          <ConsultLink small>
+            <span className="max-[400px]:hidden">Free Consultation</span><span className="hidden max-[400px]:inline">Enquire</span>
+          </ConsultLink>
           <button ref={btnRef} type="button" aria-expanded={open} aria-controls="site-menu" onClick={(e) => { e.stopPropagation(); setOpen((o) => !o); }}
             className="grid size-12 cursor-pointer place-items-center rounded-brand text-ink lg:hidden max-[400px]:w-11">
             <span className="sr-only">Menu</span>

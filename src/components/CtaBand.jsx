@@ -1,10 +1,12 @@
 import { ButtonLink, Magnetic } from './ui.jsx';
+import ConsultLink from './ConsultLink.jsx';
 
 export default function CtaBand({
   heading = 'Not sure where to start?',
   text = 'Tell us what you need, and we will help you understand the next steps.',
   label = 'Send an Enquiry',
   to = '/contact/#enquiry',
+  consult, // { service, sub, city, destination }: opens the consultation modal instead of linking to /contact/
 }) {
   return (
     <section className="relative overflow-hidden bg-brand py-[clamp(4rem,8vw,7rem)] text-ink [--focus:var(--color-ink)]" aria-labelledby="cta-h">
@@ -13,7 +15,9 @@ export default function CtaBand({
         <Magnetic id="cta-h" className="text-hero leading-[.98] font-extrabold tracking-[-0.045em] lg:max-w-[12ch]">{heading}</Magnetic>
         <div className="grid max-w-[30rem] content-end justify-items-center gap-6 lg:justify-items-start">
           <p className="text-lede leading-normal">{text}</p>
-          <ButtonLink to={to} variant="dark" arrow>{label}</ButtonLink>
+          {consult
+            ? <ConsultLink {...consult} variant="dark" arrow>{label}</ConsultLink>
+            : <ButtonLink to={to} variant="dark" arrow>{label}</ButtonLink>}
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import PageHero from '../components/PageHero.jsx';
 import CtaBand from '../components/CtaBand.jsx';
+import ServiceComparison from '../components/home/ServiceComparison.jsx';
 import { ButtonLink } from '../components/ui.jsx';
 import { Link } from '../lib/router.jsx';
 import { SERVICES, serviceUrl } from '../data/services.js';
@@ -29,7 +30,8 @@ export default function ServicesHub() {
           </p>
         </div>
       </section>
-      <CtaBand />
+      <ServiceComparison />
+      <CtaBand consult={{}} label="Get Free Consultation" />
     </>
   );
 }

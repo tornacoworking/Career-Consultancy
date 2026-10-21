@@ -3,12 +3,16 @@
  * The prerender script renders each path to its own HTML file.
  */
 import { SITE } from './data/site.js';
-import { SERVICES, serviceUrl } from './data/services.js';
+import { SERVICES, SERVICE_BY_SLUG, SUBSERVICES, serviceUrl, subServiceUrl } from './data/services.js';
+import { PUBLISHED_CITIES, cityUrl } from './data/cities.js';
 import { GUIDES, guideUrl } from './data/guides.js';
 import { LEGAL_PAGES } from './data/legal.js';
 import Home from './pages/Home.jsx';
 import ServicesHub from './pages/ServicesHub.jsx';
 import ServicePage from './pages/ServicePage.jsx';
+import SubServicePage from './pages/SubServicePage.jsx';
+import CityPage from './pages/CityPage.jsx';
+import CityDirectory from './pages/CityDirectory.jsx';
 import About from './pages/About.jsx';
 import Faqs from './pages/Faqs.jsx';
 import Contact from './pages/Contact.jsx';
@@ -45,7 +49,7 @@ export const routes = [
     meta: {
       title: `${SITE.name}: Visa, Documents, Certifications & Training`,
       description:
-        'Online consultancy for experience document assistance, visa application support, online certification guidance and online training. Clear scope and fees in writing.',
+        'Online consultancy for experience document assistance, visa application support, online certification guidance and online training. Scope and fees in writing.',
       jsonld: [
         orgSchema(),
         { '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${SITE.url}/#website`, url: `${SITE.url}/`, name: SITE.name, publisher: { '@id': ORG_ID }, inLanguage: 'en-IN' },
@@ -74,6 +78,53 @@ export const routes = [
           '@context': 'https://schema.org', '@type': 'Service', name: s.h1, serviceType: s.name, description: s.meta,
           url: `${SITE.url}${serviceUrl(s.slug)}`, provider: { '@id': ORG_ID },
           availableChannel: { '@type': 'ServiceChannel', serviceUrl: `${SITE.url}/contact/` },
+        },
+      ],
+    },
+  })),
+  ...SUBSERVICES.map((x) => {
+    const parent = SERVICE_BY_SLUG[x.parent];
+    return {
+      path: subServiceUrl(x),
+      Component: () => <SubServicePage sub={x} />,
+      meta: {
+        title: x.title,
+        description: x.meta,
+        crumbs: crumbs(['Services', '/services/'], [parent.name, serviceUrl(parent.slug)], [x.name, subServiceUrl(x)]),
+        jsonld: [
+          orgSchema(),
+          {
+            '@context': 'https://schema.org', '@type': 'Service', name: x.h1, serviceType: x.name, description: x.meta,
+            url: `${SITE.url}${subServiceUrl(x)}`, provider: { '@id': ORG_ID }, areaServed: { '@type': 'Country', name: 'India' },
+            availableChannel: { '@type': 'ServiceChannel', serviceUrl: `${SITE.url}/contact/` },
+          },
+        ],
+      },
+    };
+  }),
+  {
+    path: '/cities/',
+    Component: CityDirectory,
+    meta: {
+      title: `Cities We Support Online: ${PUBLISHED_CITIES.length} Indian Cities | Career Consultancy`,
+      description: `Find visa, experience document and project training guidance for your city. Career Consultancy works online across India, with pages for ${PUBLISHED_CITIES.length} major cities.`,
+      crumbs: crumbs(['Cities', '/cities/']),
+    },
+  },
+  ...PUBLISHED_CITIES.map((c) => ({
+    path: cityUrl(c.slug),
+    Component: () => <CityPage city={c} />,
+    meta: {
+      title: `Visa, Documents & Training in ${c.name} | Career Consultancy`,
+      description: `Online visa support, genuine experience document guidance and project training for people in ${c.name}, ${c.state}. Free consultation, no guarantees.`,
+      crumbs: crumbs(['Cities', '/cities/'], [c.name, cityUrl(c.slug)]),
+      jsonld: [
+        orgSchema(),
+        {
+          '@context': 'https://schema.org', '@type': 'Service', name: `Career guidance for people in ${c.name}`,
+          serviceType: 'Visa application support, experience document guidance and project training',
+          url: `${SITE.url}${cityUrl(c.slug)}`, provider: { '@id': ORG_ID },
+          areaServed: { '@type': 'City', name: c.name, containedInPlace: { '@type': 'AdministrativeArea', name: c.state } },
         },
       ],
     },

@@ -10,7 +10,9 @@
     "build:staging": "vite build --mode staging && vite build --mode staging --ssr src/entry-server.jsx --outDir dist-server && node scripts/prerender.mjs --staging",
     "build:preview": "vite build --mode preview --base ./ --outDir dist-preview",
     "serve": "npx serve dist",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "seo:check": "node scripts/seo-check.mjs",
+    "check": "npm run build && npm run seo:check"
   },
   "dependencies": {
     "react": "^19.2.0",

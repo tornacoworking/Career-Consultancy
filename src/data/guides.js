@@ -5,8 +5,8 @@
 export const GUIDES = [
   {
     "slug": "how-to-request-an-experience-letter",
-    "title": "How to Request an Experience Letter from Your Employer | Career Consultancy",
-    "meta": "A step-by-step guide to requesting a genuine experience or relieving letter: what it should include, a request template, and what to do if your company has closed.",
+    "title": "How to Request an Experience Letter | Career Consultancy",
+    "meta": "A step-by-step guide to requesting a genuine experience or relieving letter: what it should include, a request template, and what to do if a company has closed.",
     "h1": "How to request an experience letter from a previous employer",
     "summary": "What a genuine experience letter includes, a request you can copy, and what to do when an employer is slow or has closed.",
     "service": "experience-documents",

@@ -3,9 +3,9 @@
 import { useRef, useState } from 'react';
 import { ServicePhoto } from '../Photo.jsx';
 import { Arrow, ButtonLink, SectionHead } from '../ui.jsx';
-import { Link } from '../../lib/router.jsx';
+import ConsultLink from '../ConsultLink.jsx';
 import { useDesktop, useFinePointer } from '../../lib/hooks.js';
-import { SERVICES, enquireUrl, serviceUrl } from '../../data/services.js';
+import { SERVICES, serviceUrl } from '../../data/services.js';
 
 const ROWS = ['lg:row-start-1', 'lg:row-start-2', 'lg:row-start-3', 'lg:row-start-4'];
 
@@ -68,7 +68,7 @@ export default function ServiceExplorer() {
                   </p>
                   <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 lg:justify-start">
                     <ButtonLink to={serviceUrl(s.slug)} variant="dark" small arrow>About {s.name.toLowerCase()}</ButtonLink>
-                    <Link className="text-link" to={enquireUrl(s.slug)}>Enquire <Arrow /></Link>
+                    <ConsultLink service={s.slug} plain className="text-link">Enquire <Arrow /></ConsultLink>
                   </div>
                 </div>
               </div>

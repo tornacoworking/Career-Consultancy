@@ -1,6 +1,10 @@
 // Generated from the original content and then maintained by hand.
 // Anything marked CONFIRM must be verified by the business owner before launch.
 
+import { VISA_SUBSERVICES } from './visaServices.js';
+import { EXPERIENCE_SUBSERVICES } from './experienceDocumentServices.js';
+import { TRAINING_SUBSERVICES } from './trainingServices.js';
+
 export const SERVICES = [
   {
     "slug": "experience-documents",
@@ -108,7 +112,7 @@ export const SERVICES = [
     "name": "Visa Services",
     "short": "Support understanding official requirements, preparing documents and completing visa forms carefully.",
     "title": "Visa Application Support | Career Consultancy",
-    "meta": "Independent visa application support: understand official requirements, build your document checklist and complete forms carefully. No approval guarantees, ever.",
+    "meta": "Independent visa application support: understand official requirements, build your document checklist and complete forms carefully. No approval guarantees.",
     "h1": "Visa application support",
     "intro": "Every country sets its own visa rules, and they change often. We help you read the official requirements for your destination and visa type, prepare your documents in order, and complete forms carefully, so your application reflects your situation accurately.",
     "audience": [
@@ -405,4 +409,19 @@ export const SERVICES = [
 
 export const SERVICE_BY_SLUG = Object.fromEntries(SERVICES.map((s) => [s.slug, s]));
 export const serviceUrl = (slug) => `/services/${slug}/`;
-export const enquireUrl = (slug) => `/contact/?service=${slug}#enquiry`;
+
+// Sub-services (the detail pages under each main service) live in their own data files.
+export const SUBSERVICES = [...VISA_SUBSERVICES, ...EXPERIENCE_SUBSERVICES, ...TRAINING_SUBSERVICES];
+export const subServiceUrl = (sub) => `/services/${sub.parent}/${sub.slug}/`;
+export const subServicesOf = (parentSlug) => SUBSERVICES.filter((x) => x.parent === parentSlug);
+
+/**
+ * Link to the enquiry form with fields prefilled.
+ * `extra` may contain: sub (sub-service slug), city (city slug), destination, domain.
+ */
+export function enquireUrl(slug, extra = {}) {
+  const q = new URLSearchParams();
+  if (slug) q.set('service', slug);
+  for (const [k, v] of Object.entries(extra)) if (v) q.set(k, v);
+  return `/contact/?${q.toString()}#enquiry`;
+}

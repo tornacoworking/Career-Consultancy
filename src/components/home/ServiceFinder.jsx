@@ -1,9 +1,10 @@
 /* "What brings you here?" — goal-based picker that suggests one service. */
 import { useState } from 'react';
-import { Arrow, ButtonLink, Eyebrow } from '../ui.jsx';
+import { Arrow, Eyebrow } from '../ui.jsx';
+import ConsultLink from '../ConsultLink.jsx';
 import { Link } from '../../lib/router.jsx';
 import { NEEDS } from '../../data/home.js';
-import { SERVICE_BY_SLUG, enquireUrl, serviceUrl } from '../../data/services.js';
+import { SERVICE_BY_SLUG, serviceUrl } from '../../data/services.js';
 
 export default function ServiceFinder() {
   const [need, setNeed] = useState(NEEDS[0].slug);
@@ -47,7 +48,7 @@ export default function ServiceFinder() {
               </div>
             </dl>
             <div className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 lg:justify-start">
-              <ButtonLink to={enquireUrl(need)} arrow>Enquire about this</ButtonLink>
+              <ConsultLink service={need} arrow>Enquire about this</ConsultLink>
               <Link className="text-link" to={serviceUrl(need)}>Read the full details <Arrow /></Link>
             </div>
           </div>

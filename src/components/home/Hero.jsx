@@ -1,5 +1,7 @@
 import { HeroPhoto } from '../Photo.jsx';
 import HeroReadiness from './HeroReadiness.jsx';
+import CityExplorer from '../CityExplorer.jsx';
+import ConsultLink from '../ConsultLink.jsx';
 import { Arrow, ButtonLink, Eyebrow } from '../ui.jsx';
 import { Link } from '../../lib/router.jsx';
 import { SITE } from '../../data/site.js';
@@ -15,12 +17,17 @@ export default function Hero() {
             Your goals. Your <span className="accent">next&nbsp;step.</span> Our guidance.
           </h1>
           <p className="lede">
-            Explore documentation assistance, visa services, online certifications, and online training through a clear, supportive, and professional experience.
+            Get personalised guidance for visa applications, genuine experience documentation, online certifications and real-time project training, wherever you are in India.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 lg:justify-start">
-            <ButtonLink to="/services/" arrow>Explore Our Services</ButtonLink>
-            <ButtonLink to="/contact/#enquiry" variant="ghost">Get Assistance</ButtonLink>
+            <ConsultLink arrow>Get Free Consultation</ConsultLink>
+            <ButtonLink to="/services/" variant="ghost">Explore Our Services</ButtonLink>
           </div>
+          <ul className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-1 text-[.875rem] text-muted lg:justify-start" aria-label="How we work">
+            <li>Transparent scope and fees in writing</li>
+            <li>Personal support</li>
+            <li>No approval or job guarantees</li>
+          </ul>
         </div>
         <div className="relative mx-auto w-full max-w-[560px] min-w-0">
           <figure>
@@ -29,8 +36,11 @@ export default function Hero() {
           <HeroReadiness />
         </div>
       </div>
+      <div className="wrap mt-[clamp(2.5rem,5vw,4rem)]">
+        <div className="border border-ink bg-white p-[clamp(1.1rem,3vw,1.75rem)]"><CityExplorer compact /></div>
+      </div>
       <div className="wrap">
-        <ul className="mt-[clamp(2.5rem,5vw,4rem)] grid grid-cols-[repeat(auto-fit,minmax(min(100%,230px),1fr))] border-t border-ink" aria-label="Our services">
+        <ul className="mt-[clamp(2rem,4vw,3rem)] grid grid-cols-[repeat(auto-fit,minmax(min(100%,230px),1fr))] border-t border-ink" aria-label="Our services">
           {SERVICES.map((s) => (
             <li key={s.slug}>
               <Link to={serviceUrl(s.slug)}
