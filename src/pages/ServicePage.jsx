@@ -2,9 +2,13 @@ import { ServicePhoto } from '../components/Photo.jsx';
 import CtaBand from '../components/CtaBand.jsx';
 import Toc from '../components/Toc.jsx';
 import Checklist from '../components/Checklist.jsx';
-import { Arrow, ButtonLink, Eyebrow, FaqList, Html } from '../components/ui.jsx';
+import { Arrow, Eyebrow, FaqList, Html } from '../components/ui.jsx';
+import ConsultLink from '../components/ConsultLink.jsx';
+import { CourseVsProject, DestinationPicker, FormatList, GenuineCompare, SubServiceGrid } from '../components/ServiceSections.jsx';
 import { Link } from '../lib/router.jsx';
-import { SERVICE_BY_SLUG, enquireUrl, serviceUrl } from '../data/services.js';
+import { useConsult } from '../lib/consult.jsx';
+import { CITY_BY_SLUG, cityUrl } from '../data/cities.js';
+import { SERVICE_BY_SLUG, serviceUrl, subServicesOf } from '../data/services.js';
 import { TRAINING_PROGRAMMES } from '../data/site.js';
 
 function Programmes({ slug }) {
@@ -28,13 +32,46 @@ function Programmes({ slug }) {
   return (
     <div className="grid justify-items-center gap-5 bg-grey p-[clamp(1.5rem,3vw,2rem)] text-center lg:justify-items-start lg:text-left">
       <p>Our programme calendar is being finalised. Send an enquiry with the skill you want to learn, and we will share what is currently available, including the schedule, duration, trainer and fee.</p>
-      <ButtonLink to={enquireUrl(slug)} small arrow>Ask about programmes</ButtonLink>
+      <ConsultLink service={slug} small arrow>Discuss This Training</ConsultLink>
     </div>
   );
 }
 
+// Extra sections for the services that have sub-service pages. Each is { id, title, intro, node }.
+function extraSections(s, subs) {
+  if (!subs.length) return [];
+  const types = { id: 'types', intro: null, node: <SubServiceGrid items={subs} /> };
+  if (s.slug === 'visa-services') {
+    return [
+      { ...types, title: 'Types of visa support' },
+      { id: 'destinations', title: 'Choose a destination', intro: null, node: <DestinationPicker /> },
+    ];
+  }
+  if (s.slug === 'experience-documents') {
+    return [
+      { ...types, title: 'Types of documentation help' },
+      { id: 'genuine', title: 'Genuine records only', intro: 'Helping you obtain and organise real documents is very different from fabricating a work history. We do the first and never the second.', node: <GenuineCompare /> },
+    ];
+  }
+  if (s.slug === 'online-training') {
+    return [
+      { ...types, title: 'Training domains' },
+      { id: 'course-or-project', title: 'Course training or live project training', intro: 'Both are hands-on. The right starting point depends on how much you already know.', node: <CourseVsProject /> },
+      { id: 'formats', title: 'Learning formats', intro: 'Formats are confirmed in writing before you enrol.', node: <FormatList /> },
+    ];
+  }
+  return [];
+}
+
+const CITY_HASH = { 'visa-services': 'visa', 'experience-documents': 'documents', 'online-training': 'training' };
+
 export default function ServicePage({ service: s }) {
+  const { city: citySlug } = useConsult();
+  const city = CITY_BY_SLUG[citySlug];
+  const subs = subServicesOf(s.slug);
+  const extras = extraSections(s, subs);
   const toc = [['scope', 'What we help with'], ['important', 'Important to know'], ['who', 'Who this is for'], ['ready', 'What to keep ready'], ['process', 'How it works']];
+  extras.forEach((x) => toc.push([x.id, x.title]));
   if (s.slug === 'online-training') toc.push(['programmes', 'Current programmes']);
   else if (s.extra) toc.push(['more', s.extra.title]);
   toc.push(['questions', 'Common questions'], ['related', 'Related services']);
@@ -48,9 +85,14 @@ export default function ServicePage({ service: s }) {
             <h1 className="page-h my-1" data-spotlight>{s.h1}</h1>
             <p className="lede">{s.intro}</p>
             <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 lg:justify-start">
-              <ButtonLink to={enquireUrl(s.slug)} arrow>Enquire about this service</ButtonLink>
+              <ConsultLink service={s.slug} arrow>Enquire about this service</ConsultLink>
               <a className="btn btn-ghost" href="#process">See the process</a>
             </div>
+            {city && CITY_HASH[s.slug] && (
+              <p className="text-[.9375rem] text-muted">
+                Your city: <strong className="text-ink">{city.name}</strong> · <Link to={`${cityUrl(city.slug)}#${CITY_HASH[s.slug]}`} className="underline decoration-brand">how this works in {city.name}</Link>
+              </p>
+            )}
           </div>
           <figure className="mx-auto w-full max-w-[560px] min-w-0">
             <ServicePhoto slug={s.slug} alt={s.art_label} eager className="h-auto w-full rounded-brand object-cover" />
@@ -99,6 +141,13 @@ export default function ServicePage({ service: s }) {
             <h2>How it works</h2>
             <ol className="steps">{s.steps.map((x) => <li key={x.title}><h3>{x.title}</h3><p>{x.text}</p></li>)}</ol>
           </section>
+          {extras.map((x) => (
+            <section key={x.id} id={x.id}>
+              <h2>{x.title}</h2>
+              {x.intro && <p>{x.intro}</p>}
+              {x.node}
+            </section>
+          ))}
           {s.slug === 'online-training' ? (
             <section id="programmes"><h2>Current programmes</h2><Programmes slug={s.slug} /></section>
           ) : s.extra && (
@@ -134,13 +183,13 @@ export default function ServicePage({ service: s }) {
             <div className="on-dark grid justify-items-start gap-3.5 bg-ink p-6 text-paper">
               <p className="font-display text-xl leading-tight font-bold tracking-[-0.02em]">Questions about {s.name.toLowerCase()}?</p>
               <p className="text-[.9375rem] text-dark-muted">Send a short enquiry. You&apos;ll get the scope, timeline and fee in writing before anything starts.</p>
-              <ButtonLink to={enquireUrl(s.slug)} small arrow>Send an enquiry</ButtonLink>
+              <ConsultLink service={s.slug} city={city?.slug} small arrow>Send an enquiry</ConsultLink>
             </div>
           </div>
         </aside>
       </div>
       <CtaBand heading="Ready for your next step?" text={`Tell us about your situation and we'll explain how our ${s.name.toLowerCase()} service can help.`}
-        label="Enquire now" to={enquireUrl(s.slug)} />
+        label="Enquire now" consult={{ service: s.slug }} />
     </>
   );
 }

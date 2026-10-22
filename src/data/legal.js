@@ -15,7 +15,7 @@ export const LEGAL_PAGES = [
       },
       {
         "title": "What we collect",
-        "html": "<p>When you send an enquiry, we collect your name, email address, phone number (if you give it), the service you are interested in, your preferred contact method and your message.</p><p>Our hosting provider may also record technical information such as IP address and browser type in server logs, to keep the website secure.</p>"
+        "html": "<p>When you send an enquiry, we collect your name, email address, phone number, preferred city, the service and sub-service you are interested in, the destination country (for visa enquiries), your preferred contact method and your message if you write one.</p><p>Our hosting provider may also record technical information such as IP address and browser type in server logs, to keep the website secure.</p>"
       },
       {
         "title": "How we use it",
@@ -23,7 +23,7 @@ export const LEGAL_PAGES = [
       },
       {
         "title": "Who we share it with",
-        "html": "<p>Your enquiry passes through the service providers we use to run this website and receive email. They process it on our behalf and only for that purpose. We share information with others only when you ask us to, or when the law requires it.</p>"
+        "html": "<p>Your enquiry is sent by email through a third-party form service (FormSubmit) to our enquiry inbox, and passes through the hosting and email providers we use to run this website. They process it on our behalf and only for that purpose. We share information with others only when you ask us to, or when the law requires it.</p>"
       },
       {
         "title": "How long we keep it",
@@ -120,6 +120,38 @@ export const LEGAL_PAGES = [
       {
         "title": "How to request a refund",
         "html": "<p>Email {{email}} with your name and the service. We will confirm receipt and process approved refunds to your original payment method within 7–10 working days.</p>"
+      }
+    ]
+  },
+  {
+    "path": "/disclaimer/",
+    "name": "Disclaimer",
+    "title": "Disclaimer | Career Consultancy",
+    "description": "What Career Consultancy does and does not do: no visa approval guarantees, no fabricated documents, no job guarantees, and no government affiliation.",
+    "sections": [
+      {
+        "title": "Independent consultancy",
+        "html": "<p>Career Consultancy is an independent consultancy. We are not an embassy, consulate, immigration authority or government body, and we are not affiliated with any of them. We do not provide immigration legal advice and we do not act as your authorised representative unless we agree this with you in writing.</p>"
+      },
+      {
+        "title": "Visa services",
+        "html": "<p>Visa rules, fees and processing times are set by the relevant authorities and change often. Nothing on this website is a statement of current requirements. Eligibility and every decision rest with the destination authority. We do not guarantee that any visa will be approved.</p>"
+      },
+      {
+        "title": "Experience documents",
+        "html": "<p>We help you request, check and organise genuine records from employers you actually worked for. We do not create, alter, backdate or issue experience letters, salary records or verification responses. Whether a document can be obtained depends on your real employment history and the policies of the organisation that issues it.</p>"
+      },
+      {
+        "title": "Training and certifications",
+        "html": "<p>Training does not guarantee a job, a placement or an interview. Training projects must be described honestly as training projects and never as paid employment. If a certificate is offered, we state who issues it before you enrol.</p>"
+      },
+      {
+        "title": "Locations",
+        "html": "<p>Our services are delivered online. City pages describe how our guidance applies to people in that city. They do not mean we have an office there.</p>"
+      },
+      {
+        "title": "Information on this website",
+        "html": "<p>This website is general information, not professional advice for your particular circumstances. Please confirm important details with the relevant authority or organisation before you act.</p>"
       }
     ]
   }

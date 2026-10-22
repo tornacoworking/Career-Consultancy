@@ -55,7 +55,8 @@
 @layer components {
   .wrap { @apply mx-auto w-full max-w-[1280px] px-[clamp(1rem,4vw,3rem)]; }
   .wrap-narrow { @apply mx-auto w-full max-w-[860px] px-[clamp(1rem,4vw,3rem)]; }
-  .section { padding-block: clamp(4rem, 3rem + 5vw, 8rem); }
+  /* content-visibility lets the browser skip style/layout for sections that are off screen. */
+  .section { padding-block: clamp(4rem, 3rem + 5vw, 8rem); content-visibility: auto; contain-intrinsic-size: auto 700px; }
 
   .eyebrow { @apply inline-flex items-center gap-[.6em] font-mono text-[.8125rem] leading-tight font-medium uppercase tracking-[.08em] text-muted; }
   .eyebrow::before { content: ""; @apply size-[.55em] shrink-0 rounded-full bg-brand; }
@@ -146,6 +147,11 @@
 .cursor.is-field { opacity: 0; }
 .has-cursor, .has-cursor * { cursor: none !important; }
 .has-cursor :is(input[type="text"], input[type="email"], input[type="tel"], input[type="search"], textarea) { cursor: text !important; }
+/* An open <dialog> is in the browser's top layer, above the custom cursor, so give it the normal cursor. */
+.has-cursor dialog[open], .has-cursor dialog[open] * { cursor: auto !important; }
+.has-cursor dialog[open] :is(button, a, select, label, summary) { cursor: pointer !important; }
+.has-cursor dialog[open] :is(input[type="text"], input[type="email"], input[type="tel"], textarea) { cursor: text !important; }
+body:has(dialog[open]) .cursor { opacity: 0 !important; }
 
 /* Heading text recoloured only inside the circle (no duplicated text) */
 [data-spotlight] { --r: 0px; transition: --r .4s var(--ease-brand); --spot-in: var(--color-brand); --spot-out: var(--color-ink); }

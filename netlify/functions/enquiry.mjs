@@ -8,27 +8,27 @@
  *
  * Accepts JSON (from the JS form) and urlencoded posts (no-JS fallback, answered with a 303 redirect).
  */
-const SERVICES = new Set(['experience-documents', 'visa-services', 'online-certifications', 'online-training', 'not-sure']);
 const PREFERRED = new Set(['email', 'phone', 'whatsapp']);
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-const PHONE = /^\+?[0-9][0-9\s\-()]{6,18}$/;
+// Indian mobile (optional +91/91/0 prefix) or an international +number. Mirrors isValidPhone() in the form.
+const isPhone = (raw) => { const s = raw.replace(/[\s\-().]/g, ''); return /^(\+91|91|0)?[6-9]\d{9}$/.test(s) || /^\+(?!91)\d{8,15}$/.test(s); };
 const clean = (v, max) => String(v ?? '').replace(/[\u0000-\u0008\u000B-\u001F\u007F]/g, '').trim().slice(0, max);
 const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 function validate(raw) {
   const d = {
     name: clean(raw.name, 100), email: clean(raw.email, 160).toLowerCase(), phone: clean(raw.phone, 20),
-    service: clean(raw.service, 40), preferred: clean(raw.preferred, 20) || 'email',
+    city: clean(raw.city, 80), service: clean(raw.service, 60), sub_service: clean(raw.sub_service, 80),
+    destination_country: clean(raw.destination_country, 60), preferred: clean(raw.preferred_contact, 20) || 'email',
     message: clean(raw.message, 2000), consent: raw.consent === 'yes' || raw.consent === true,
   };
   const errors = [];
   if (d.name.length < 2) errors.push('name');
   if (!EMAIL.test(d.email)) errors.push('email');
-  if (!SERVICES.has(d.service)) errors.push('service');
+  if (!d.service) errors.push('service');
+  if (!d.city) errors.push('city');
   if (!PREFERRED.has(d.preferred)) errors.push('preferred');
-  if (d.phone && !PHONE.test(d.phone)) errors.push('phone');
-  if (d.preferred !== 'email' && !d.phone) errors.push('phone');
-  if (d.message.length < 20) errors.push('message');
+  if (!isPhone(d.phone)) errors.push('phone');
   if (!d.consent) errors.push('consent');
   return { d, errors };
 }
@@ -36,7 +36,8 @@ function validate(raw) {
 async function deliver(d) {
   const env = process.env;
   const subject = `Career Consultancy Enquiry — ${d.name}`;
-  const text = `Name: ${d.name}\nEmail: ${d.email}\nPhone: ${d.phone || '-'}\nService: ${d.service}\n` +
+  const text = `Name: ${d.name}\nEmail: ${d.email}\nPhone: ${d.phone}\nCity: ${d.city}\nService: ${d.service}\n` +
+    `Sub-service: ${d.sub_service || '-'}\nDestination: ${d.destination_country || '-'}\n` +
     `Preferred contact: ${d.preferred}\nConsent: yes\nReceived: ${new Date().toISOString()}\n\n${d.message}`;
   if (env.RESEND_API_KEY && env.ENQUIRY_TO_EMAIL && env.ENQUIRY_FROM_EMAIL) {
     const r = await fetch('https://api.resend.com/emails', {

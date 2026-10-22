@@ -2,8 +2,8 @@
    Nothing is stored or sent. Uses each service's own "what to keep ready" list. */
 import { useState } from 'react';
 import { Arrow } from '../ui.jsx';
-import { Link } from '../../lib/router.jsx';
-import { SERVICES, enquireUrl } from '../../data/services.js';
+import ConsultLink from '../ConsultLink.jsx';
+import { SERVICES } from '../../data/services.js';
 
 const MAX_ITEMS = 4;
 const SHORT = { 'experience-documents': 'Documents', 'visa-services': 'Visa', 'online-certifications': 'Certification', 'online-training': 'Training' };
@@ -60,9 +60,9 @@ export default function HeroReadiness() {
       <p className="mt-1 text-[.8125rem] text-muted" aria-live="polite">
         <span className="sr-only">{ticks.length} of {items.length} ready. </span>{verdict(ticks.length, items.length)}
       </p>
-      <Link to={enquireUrl(slug)} className="text-link mt-2 inline-flex min-h-9 items-center gap-1.5 text-[.9375rem]">
+      <ConsultLink service={slug} plain className="text-link mt-2 inline-flex min-h-9 items-center gap-1.5 text-[.9375rem]">
         Get help with {s.name.toLowerCase()} <Arrow />
-      </Link>
+      </ConsultLink>
     </section>
   );
 }

@@ -26,11 +26,24 @@
   status = 200
   force = true
 
-# Example permanent redirect pattern (add old URLs here if the site replaces an older one)
-# [[redirects]]
-#   from = "/visa"
-#   to = "/services/visa-services/"
-#   status = 301
+# The site's service URLs are /services/experience-documents/ and /services/online-training/.
+# These permanent redirects make the alternative paths people may link to land on the right page.
+[[redirects]]
+  from = "/services/experience-document-assistance"
+  to = "/services/experience-documents/"
+  status = 301
+[[redirects]]
+  from = "/services/experience-document-assistance/*"
+  to = "/services/experience-documents/:splat"
+  status = 301
+[[redirects]]
+  from = "/services/real-time-project-training"
+  to = "/services/online-training/"
+  status = 301
+[[redirects]]
+  from = "/services/real-time-project-training/*"
+  to = "/services/online-training/:splat"
+  status = 301
 
 [[headers]]
   for = "/*"

@@ -2,11 +2,13 @@ import { Link } from '../lib/router.jsx';
 import { Brand } from './Header.jsx';
 import { SITE } from '../data/site.js';
 import { SERVICES, serviceUrl } from '../data/services.js';
+import { POPULAR_CITIES, PUBLISHED_CITIES, cityUrl } from '../data/cities.js';
 
 const COLUMNS = [
   ['Services', SERVICES.map((s) => [s.name, serviceUrl(s.slug)])],
   ['Company', [['About Us', '/about/'], ['How It Works', '/#how-it-works'], ['FAQs', '/faqs/'], ['Guides', '/guides/'], ['Share Feedback', '/feedback/']]],
-  ['Legal', [['Privacy Policy', '/privacy-policy/'], ['Terms and Conditions', '/terms-and-conditions/'], ['Refund and Cancellation', '/refund-and-cancellation-policy/']]],
+  ['Legal', [['Privacy Policy', '/privacy-policy/'], ['Terms and Conditions', '/terms-and-conditions/'], ['Refund and Cancellation', '/refund-and-cancellation-policy/'], ['Disclaimer', '/disclaimer/']]],
+  ['Cities', [...POPULAR_CITIES.map((c) => [c.name, cityUrl(c.slug)]), [`All ${PUBLISHED_CITIES.length} cities`, '/cities/']]],
 ];
 
 const linkCls = 'inline-flex min-h-9 items-center no-underline hover:text-brand';
@@ -15,7 +17,7 @@ export default function Footer() {
   return (
     <footer className="on-dark bg-ink pt-[clamp(3.5rem,6vw,5rem)] pb-8 text-paper">
       <div className="wrap">
-        <div className="grid grid-cols-1 gap-10 text-center sm:grid-cols-2 lg:grid-cols-[minmax(0,1.5fr)_repeat(4,minmax(0,1fr))] lg:text-left">
+        <div className="grid grid-cols-1 gap-10 text-center sm:grid-cols-2 lg:grid-cols-[minmax(0,1.5fr)_repeat(5,minmax(0,1fr))] lg:text-left">
           <div className="grid content-start justify-items-center gap-4 sm:col-span-2 lg:col-span-1 lg:justify-items-start">
             <Brand light />
             <p className="max-w-[26rem] text-[.9375rem] text-dark-muted">{SITE.description}</p>
