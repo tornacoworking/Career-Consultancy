@@ -198,3 +198,7 @@ Set `SITE.url` in `src/data/site.js` to your real origin (no trailing slash). Ca
 - [ ] Legal review of the Privacy, Terms and Refund pages (`data/legal.js`)
 - [ ] Activate FormSubmit (see above) and send a test enquiry
 - [ ] Submit `sitemap.xml` in Google Search Console
+
+
+
+Testing for auto comit 
