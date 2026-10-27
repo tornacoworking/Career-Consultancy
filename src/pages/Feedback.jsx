@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import PageHero from '../components/PageHero.jsx';
 import { ButtonLink } from '../components/ui.jsx';
+import { Picture } from '../components/Photo.jsx';
 import { CheckField, ErrorSummary, Field, Honeypot, StatusMessage, SubmitButton, describe } from '../components/FormBits.jsx';
 import { Link, useLocation } from '../lib/router.jsx';
 import { failureReason, sendForm } from '../lib/sendForm.js';
@@ -140,6 +141,9 @@ export default function Feedback() {
           </ul>
           <h2 className="text-title">Need help instead?</h2>
           <p>If something went wrong and you need it fixed, <Link to="/contact/#enquiry" className="underline decoration-brand">contact us directly</Link> so we can respond quickly.</p>
+          <Picture name="training-enquiry.jpg" width={800} height={600} alt="A learner smiling as she writes notes beside her laptop"
+            className="mt-2 h-auto w-full rounded-brand object-cover" />
+          <p className="text-left text-[.9375rem] text-muted">A few honest lines are plenty. Say what you needed, what we did and what could have been better.</p>
         </aside>
       </div>
     </>

@@ -55,11 +55,11 @@ export const LEGAL_PAGES = [
       },
       {
         "title": "Our role",
-        "html": "<p>Career Consultancy is an independent consultancy. We are not an embassy, consulate, government body, employer or certification body, and we are not affiliated with any such organisation unless we state otherwise.</p>"
+        "html": "<p>Career Consultancy is an independent consultancy. We are not an embassy, consulate, government body or employer, and we are not affiliated with any such organisation unless we state otherwise.</p>"
       },
       {
         "title": "No guaranteed outcomes",
-        "html": "<p>Decisions on visas, employment records, certificates and exams are made by the relevant authorities, employers and providers. We do not guarantee any outcome.</p>"
+        "html": "<p>Decisions on visas and employment records are made by the relevant authorities, employers and providers. We do not guarantee any outcome.</p>"
       },
       {
         "title": "Your responsibilities",
@@ -102,16 +102,16 @@ export const LEGAL_PAGES = [
         "html": "<p>If you cancel after work has started, we refund the part of our fee that covers work not yet done. We will show you how we calculated it.</p>"
       },
       {
-        "title": "Online training",
+        "title": "Real time project training",
         "html": "<p>For training programmes, the cancellation deadline and any refund for sessions not attended are stated in the programme details you receive before enrolling.</p>"
       },
       {
         "title": "Official and third-party fees",
-        "html": "<p>Government, embassy, visa application centre, exam and certification provider fees are paid to those organisations and are governed by their own refund rules. We cannot refund them.</p>"
+        "html": "<p>Government, embassy and visa application centre fees are paid to those organisations and are governed by their own refund rules. We cannot refund them.</p>"
       },
       {
         "title": "Outcomes",
-        "html": "<p>Decisions by authorities, employers and certification providers are outside our control. A refusal or unsuccessful result does not by itself entitle you to a refund of fees for assistance we have already provided.</p>"
+        "html": "<p>Decisions by authorities and employers are outside our control. A refusal or unsuccessful result does not by itself entitle you to a refund of fees for assistance we have already provided.</p>"
       },
       {
         "title": "If we cannot provide the service",
@@ -134,15 +134,15 @@ export const LEGAL_PAGES = [
         "html": "<p>Career Consultancy is an independent consultancy. We are not an embassy, consulate, immigration authority or government body, and we are not affiliated with any of them. We do not provide immigration legal advice and we do not act as your authorised representative unless we agree this with you in writing.</p>"
       },
       {
-        "title": "Visa services",
+        "title": "Visa documentation",
         "html": "<p>Visa rules, fees and processing times are set by the relevant authorities and change often. Nothing on this website is a statement of current requirements. Eligibility and every decision rest with the destination authority. We do not guarantee that any visa will be approved.</p>"
       },
       {
-        "title": "Experience documents",
-        "html": "<p>We help you request, check and organise genuine records from employers you actually worked for. We do not create, alter, backdate or issue experience letters, salary records or verification responses. Whether a document can be obtained depends on your real employment history and the policies of the organisation that issues it.</p>"
+        "title": "Experience certificates",
+        "html": "<p>We help you request, check and organise genuine records from employers you actually worked for. We do not create, alter, backdate or issue experience certificates, experience letters, salary records or verification responses. Whether a document can be obtained depends on your real employment history and the policies of the organisation that issues it.</p>"
       },
       {
-        "title": "Training and certifications",
+        "title": "Project training",
         "html": "<p>Training does not guarantee a job, a placement or an interview. Training projects must be described honestly as training projects and never as paid employment. If a certificate is offered, we state who issues it before you enrol.</p>"
       },
       {

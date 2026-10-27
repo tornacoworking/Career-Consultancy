@@ -1,4 +1,5 @@
 import { Eyebrow } from '../ui.jsx';
+import { Picture } from '../Photo.jsx';
 import { BENEFITS } from '../../data/home.js';
 
 export default function Benefits() {
@@ -9,6 +10,8 @@ export default function Benefits() {
           <Eyebrow>Why Career Consultancy</Eyebrow>
           <h2 id="why-h" className="h-section" data-spotlight>Guidance you can actually follow.</h2>
           <p className="lede">We focus on the things that make a difference when you are dealing with paperwork, providers and deadlines.</p>
+          <Picture name="about.jpg" width={1200} height={675} alt="A consultant and a client talking through their situation across a table"
+            className="mt-4 h-auto w-full max-w-[520px] rounded-brand object-cover" />
         </div>
         <ul className="min-w-0 border-t border-ink">
           {BENEFITS.map((b) => (

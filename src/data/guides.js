@@ -9,7 +9,7 @@ export const GUIDES = [
     "meta": "A step-by-step guide to requesting a genuine experience or relieving letter: what it should include, a request template, and what to do if a company has closed.",
     "h1": "How to request an experience letter from a previous employer",
     "summary": "What a genuine experience letter includes, a request you can copy, and what to do when an employer is slow or has closed.",
-    "service": "experience-documents",
+    "service": "experience-certificate",
     "read": "6 min read",
     "sections": [
       {
@@ -44,7 +44,7 @@ export const GUIDES = [
     "meta": "How to build an accurate visa document checklist from official requirements: document categories, format rules, consistency checks and common mistakes.",
     "h1": "How to prepare a visa document checklist",
     "summary": "Build a checklist from official requirements, organise documents by category, and check them before you submit.",
-    "service": "visa-services",
+    "service": "visa-documentation",
     "read": "5 min read",
     "sections": [
       {

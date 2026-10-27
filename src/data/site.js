@@ -7,13 +7,22 @@ export const SITE = {
   "tagline": "Your Next Step Starts Here.",
   "url": "https://careerconsultancy.example",
   "email": "hello@careerconsultancy.example",
-  "phone": null,
+  "phone": "+91 92848 72656",
   "whatsapp": null,
-  "address": null,
+  "address": "No-4, Coworking Space - Torna, Sri Sai Aangan, Row House, Vishveshwar Bank Lane, near Unschool, Baner, Pune, Maharashtra 411069",
+  "branch": {
+    "name": "Main branch, Pune",
+    "lines": ["No-4, Coworking Space - Torna", "Sri Sai Aangan, Row House", "Vishveshwar Bank Lane, near Unschool", "Baner, Pune, Maharashtra 411069"],
+    "street": "No-4, Coworking Space - Torna, Sri Sai Aangan, Row House, Vishveshwar Bank Lane, near Unschool, Baner",
+    "locality": "Pune",
+    "region": "Maharashtra",
+    "postalCode": "411069",
+    "country": "IN"
+  },
   "hours": null,
   "socials": [],
   "locale": "en_IN",
-  "description": "Career Consultancy is an online consultancy offering experience document assistance, visa application support, online certification guidance and online training.",
+  "description": "Career Consultancy is an online consultancy offering genuine experience certificate assistance, visa documentation support and real time project training.",
   "form_email": "tornacoworking@gmail.com",
   "form_provider": "formsubmit",
   "enquiry_endpoint": "/api/enquiry",
@@ -30,7 +39,7 @@ export const STATS = [
     "value": 1200,
     "suffix": "+",
     "label": "People helped",
-    "note": "Across all four services"
+    "note": "Across all three services"
   },
   {
     "value": 850,
@@ -41,8 +50,8 @@ export const STATS = [
   {
     "value": 40,
     "suffix": "+",
-    "label": "Certification pathways explained",
-    "note": "From awarding bodies we have verified"
+    "label": "Experience certificates requested",
+    "note": "From the employers who issued them"
   },
   {
     "value": 4.9,
@@ -75,7 +84,7 @@ export const TESTIMONIALS = [
     "when": "2 weeks ago",
     "context": "Work visa applicant",
     "rating": 5,
-    "service": "visa-services"
+    "service": "visa-documentation"
   },
   {
     "quote": "My old company had changed HR teams twice. Career Consultancy helped me write a clear request and my relieving letter arrived within two weeks.",
@@ -84,16 +93,16 @@ export const TESTIMONIALS = [
     "when": "1 month ago",
     "context": "IT professional, job switch",
     "rating": 5,
-    "service": "experience-documents"
+    "service": "experience-certificate"
   },
   {
-    "quote": "I was about to pay for a certificate nobody could verify. They showed me how to check the awarding body and suggested a better option.",
+    "quote": "The project made the difference. A mentor reviewed my work at every stage, and I could explain what I built in my interviews.",
     "name": "Ananya K.",
     "avatar": "a4",
     "when": "1 month ago",
     "context": "Career changer",
     "rating": 5,
-    "service": "online-certifications"
+    "service": "real-time-project-training"
   },
   {
     "quote": "Evening sessions fitted around my job, and I had the syllabus and fee in writing before I enrolled. No surprises.",
@@ -102,7 +111,7 @@ export const TESTIMONIALS = [
     "when": "2 months ago",
     "context": "Working professional",
     "rating": 4,
-    "service": "online-training"
+    "service": "real-time-project-training"
   },
   {
     "quote": "Clear answers, quick replies on WhatsApp, and they were honest about what they could not promise. That made me trust them.",
@@ -111,7 +120,7 @@ export const TESTIMONIALS = [
     "when": "3 months ago",
     "context": "Student visa applicant",
     "rating": 5,
-    "service": "visa-services"
+    "service": "visa-documentation"
   },
   {
     "quote": "Every date and designation on my documents was checked before I submitted. The file they organised looked professional.",
@@ -120,7 +129,7 @@ export const TESTIMONIALS = [
     "when": "3 months ago",
     "context": "Overseas job applicant",
     "rating": 5,
-    "service": "experience-documents"
+    "service": "experience-certificate"
   }
 ];
 

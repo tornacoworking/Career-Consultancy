@@ -37,6 +37,12 @@ export const orgSchema = () => ({
   slogan: SITE.tagline,
   ...(SITE.email ? { email: SITE.email } : {}),
   ...(SITE.phone ? { telephone: SITE.phone } : {}),
+  ...(SITE.branch ? {
+    address: {
+      '@type': 'PostalAddress', streetAddress: SITE.branch.street, addressLocality: SITE.branch.locality,
+      addressRegion: SITE.branch.region, postalCode: SITE.branch.postalCode, addressCountry: SITE.branch.country,
+    },
+  } : {}),
   ...(SITE.socials?.length ? { sameAs: SITE.socials.map(([, u]) => u) } : {}),
 });
 
@@ -47,9 +53,9 @@ export const routes = [
     path: '/',
     Component: Home,
     meta: {
-      title: `${SITE.name}: Visa, Documents, Certifications & Training`,
+      title: 'Experience Certificate, Visa Documents & Training | Career Consultancy',
       description:
-        'Online consultancy for experience document assistance, visa application support, online certification guidance and online training. Scope and fees in writing.',
+        'Online help with genuine experience certificates, visa documentation (we do not issue visas) and real time project training. Scope and fees in writing.',
       jsonld: [
         orgSchema(),
         { '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${SITE.url}/#website`, url: `${SITE.url}/`, name: SITE.name, publisher: { '@id': ORG_ID }, inLanguage: 'en-IN' },
@@ -61,7 +67,7 @@ export const routes = [
     Component: ServicesHub,
     meta: {
       title: 'Our Services | Career Consultancy',
-      description: 'Experience document assistance, visa application support, online certification guidance and online training from Career Consultancy.',
+      description: 'Experience certificate assistance, visa documentation support and real time project training from Career Consultancy, with documents tables for each.',
       crumbs: crumbs(['Services', '/services/']),
     },
   },
@@ -107,7 +113,7 @@ export const routes = [
     Component: CityDirectory,
     meta: {
       title: `Cities We Support Online: ${PUBLISHED_CITIES.length} Indian Cities | Career Consultancy`,
-      description: `Find visa, experience document and project training guidance for your city. Career Consultancy works online across India, with pages for ${PUBLISHED_CITIES.length} major cities.`,
+      description: `Experience certificate, visa documentation and project training help for your city. We work online across India, with ${PUBLISHED_CITIES.length} city pages.`,
       crumbs: crumbs(['Cities', '/cities/']),
     },
   },
@@ -115,14 +121,14 @@ export const routes = [
     path: cityUrl(c.slug),
     Component: () => <CityPage city={c} />,
     meta: {
-      title: `Visa, Documents & Training in ${c.name} | Career Consultancy`,
-      description: `Online visa support, genuine experience document guidance and project training for people in ${c.name}, ${c.state}. Free consultation, no guarantees.`,
+      title: `Experience Certificate, Visa & Training in ${c.name}`,
+      description: `Online genuine experience certificate help, visa documentation support and project training in ${c.name}, ${c.state}. Free consultation.`,
       crumbs: crumbs(['Cities', '/cities/'], [c.name, cityUrl(c.slug)]),
       jsonld: [
         orgSchema(),
         {
           '@context': 'https://schema.org', '@type': 'Service', name: `Career guidance for people in ${c.name}`,
-          serviceType: 'Visa application support, experience document guidance and project training',
+          serviceType: 'Experience certificate guidance, visa documentation support and real time project training',
           url: `${SITE.url}${cityUrl(c.slug)}`, provider: { '@id': ORG_ID },
           areaServed: { '@type': 'City', name: c.name, containedInPlace: { '@type': 'AdministrativeArea', name: c.state } },
         },
@@ -161,7 +167,7 @@ export const routes = [
     Component: About,
     meta: {
       title: 'About Us | Career Consultancy',
-      description: 'Career Consultancy is an online consultancy for experience documents, visa applications, certifications and training, with scope and fees agreed in writing.',
+      description: 'Career Consultancy is an online consultancy for experience certificates, visa documentation and project training, with scope and fees agreed in writing.',
       crumbs: crumbs(['About Us', '/about/']),
     },
   },
@@ -170,7 +176,7 @@ export const routes = [
     Component: Faqs,
     meta: {
       title: 'Frequently Asked Questions | Career Consultancy',
-      description: "Answers about Career Consultancy's experience document, visa, certification and training services, including fees, timelines and what we can and cannot do.",
+      description: "Answers about our experience certificate, visa documentation and project training services: fees, timelines, and what we can and cannot do.",
       crumbs: crumbs(['FAQs', '/faqs/']),
     },
   },
@@ -179,7 +185,7 @@ export const routes = [
     Component: Contact,
     meta: {
       title: 'Contact Career Consultancy | Send an Enquiry',
-      description: 'Send Career Consultancy an enquiry about experience documents, visa support, online certifications or online training. No registration needed.',
+      description: 'Send Career Consultancy an enquiry about experience certificates, visa documentation or real time project training. No registration needed.',
       crumbs: crumbs(['Contact', '/contact/']),
     },
   },
@@ -193,7 +199,7 @@ export const routes = [
     Component: Feedback,
     meta: {
       title: 'Share Your Feedback | Career Consultancy',
-      description: 'Rate Career Consultancy and share a review of our experience document, visa, certification or training services.',
+      description: 'Rate Career Consultancy and share a review of our experience certificate, visa documentation or project training services.',
       crumbs: crumbs(['Share Feedback', '/feedback/']),
     },
   },

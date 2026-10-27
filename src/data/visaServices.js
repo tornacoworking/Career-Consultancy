@@ -2,7 +2,6 @@
  * Visa sub-services and destinations. Edit DESTINATIONS to change the country selector.
  * Visa rules change. Nothing here states a current requirement, fee or processing time:
  * we point to the relevant authority and help you work from its published information.
- * Sub-service names match the reference list on dreamsoftconsultancy.in/visa-services.
  */
 
 export const DESTINATIONS = [
@@ -25,11 +24,11 @@ const AUTHORITY_FAQ = {
 
 export const VISA_SUBSERVICES = [
   {
-    slug: 'study-visa', parent: 'visa-services', icon: 'graduation', name: 'Study Visa Assistance',
+    slug: 'study-visa', parent: 'visa-documentation', icon: 'graduation', name: 'Study Visa Documentation',
     short: 'Understand the official student-visa requirements and organise your academic, financial and identity documents.',
-    title: 'Study Visa Assistance | Career Consultancy',
-    meta: 'Independent help understanding student-visa requirements and organising your documents. No approval guarantees; the authority decides.',
-    h1: 'Study visa assistance',
+    title: 'Study Visa Documentation Support | Career Consultancy',
+    meta: 'Help understanding student-visa requirements and organising your documents. We do not issue visas and cannot guarantee approval; the authority decides.',
+    h1: 'Study visa documentation support',
     intro: 'A study visa usually follows an offer from an institution, and the authority then asks for proof of identity, funds and intent. We help you read the published requirements for your destination and arrange your documents in a clear, complete order.',
     audience: ['Students who already hold, or are expecting, an offer from an overseas institution', 'Parents helping a son or daughter organise a first overseas application', 'Applicants who want a second review of their file before submitting'],
     process: [
@@ -47,11 +46,11 @@ export const VISA_SUBSERVICES = [
     ],
   },
   {
-    slug: 'work-visa', parent: 'visa-services', icon: 'briefcase', name: 'Work Visa Assistance',
+    slug: 'work-visa', parent: 'visa-documentation', icon: 'briefcase', name: 'Work Visa Documentation',
     short: 'Prepare for employer-sponsored or skilled-worker routes by organising genuine work history and supporting papers.',
-    title: 'Work Visa Assistance | Career Consultancy',
-    meta: 'Help understanding work-visa requirements and organising genuine employment and identity documents. The destination authority decides.',
-    h1: 'Work visa assistance',
+    title: 'Work Visa Documentation Support | Career Consultancy',
+    meta: 'Help understanding work-visa requirements and organising genuine employment and identity documents. We do not issue visas; the authority decides.',
+    h1: 'Work visa documentation support',
     intro: 'Work visas often depend on a job offer, a sponsoring employer or a points-based assessment, and each asks for proof of your real work history. We help you understand which route your situation points to and organise accurate documents for it.',
     audience: ['Professionals with a job offer from an overseas employer', 'Skilled workers exploring a points-based or sponsored route', 'Applicants who need their employment evidence reviewed before filing'],
     process: [
@@ -69,11 +68,11 @@ export const VISA_SUBSERVICES = [
     ],
   },
   {
-    slug: 'tourist-visa', parent: 'visa-services', icon: 'plane', name: 'Tourist or Visitor Visa Assistance',
+    slug: 'tourist-visa', parent: 'visa-documentation', icon: 'plane', name: 'Tourist or Visitor Visa Documentation',
     short: 'Plan a clear document file for short visits, family trips or holidays.',
-    title: 'Tourist and Visitor Visa Assistance | Career Consultancy',
-    meta: 'Help organising documents for tourist and visitor visa applications, based on the destination authority’s published requirements. No approval guarantees.',
-    h1: 'Tourist and visitor visa assistance',
+    title: 'Tourist and Visitor Visa Documentation | Career Consultancy',
+    meta: 'Help organising documents for tourist and visitor visa applications from the destination authority’s published requirements. We do not issue visas.',
+    h1: 'Tourist and visitor visa documentation support',
     intro: 'A visitor visa asks you to show the purpose of your trip, your plans to return and your ability to fund it. We help you understand what the authority wants to see and present your documents clearly and truthfully.',
     audience: ['First-time international travellers', 'People visiting family or friends overseas', 'Travellers whose earlier application needs a more careful file'],
     process: [
@@ -91,11 +90,11 @@ export const VISA_SUBSERVICES = [
     ],
   },
   {
-    slug: 'business-visa', parent: 'visa-services', icon: 'building', name: 'Business Visa Assistance',
+    slug: 'business-visa', parent: 'visa-documentation', icon: 'building', name: 'Business Visa Documentation',
     short: 'Organise documents for meetings, conferences, training or short business trips.',
-    title: 'Business Visa Assistance | Career Consultancy',
-    meta: 'Support understanding business-visa requirements and organising invitation letters, company documents and travel papers. Decisions rest with the authority.',
-    h1: 'Business visa assistance',
+    title: 'Business Visa Documentation Support | Career Consultancy',
+    meta: 'Support understanding business-visa requirements and organising invitation letters, company documents and travel papers. We do not issue visas.',
+    h1: 'Business visa documentation support',
     intro: 'Business visas cover activities such as meetings, conferences and short assignments, and the line between a permitted business visit and work needing a different visa matters. We help you read the rules for your destination and prepare supporting papers carefully.',
     audience: ['Employees travelling for meetings, training or conferences', 'Business owners and self-employed professionals', 'Companies preparing documents for staff travel'],
     process: [
@@ -113,11 +112,11 @@ export const VISA_SUBSERVICES = [
     ],
   },
   {
-    slug: 'permanent-residency', parent: 'visa-services', icon: 'home', name: 'Permanent Residency (PR) Guidance',
+    slug: 'permanent-residency', parent: 'visa-documentation', icon: 'home', name: 'Permanent Residency (PR) Documentation',
     short: 'Understand published PR pathways and prepare a long-term document plan.',
-    title: 'Permanent Residency (PR) Guidance | Career Consultancy',
-    meta: 'Guidance on understanding permanent-residency pathways and organising documents for a long-term plan. Eligibility and decisions rest with the authorities.',
-    h1: 'Permanent residency (PR) guidance',
+    title: 'Permanent Residency (PR) Documentation | Career Consultancy',
+    meta: 'Help understanding permanent-residency pathways and organising documents for a long-term plan. We do not grant PR; eligibility rests with the authorities.',
+    h1: 'Permanent residency (PR) documentation support',
     intro: 'Permanent-residency pathways can involve points, skills assessments, language tests and years of documentation. We help you understand the published routes for your destination and build an organised, honest document plan over time.',
     audience: ['Skilled professionals thinking long term about moving abroad', 'People already abroad who want to understand PR options', 'Families planning together'],
     process: [
@@ -135,11 +134,11 @@ export const VISA_SUBSERVICES = [
     ],
   },
   {
-    slug: 'dependent-visa', parent: 'visa-services', icon: 'family', name: 'Dependent or Family Visa Assistance',
+    slug: 'dependent-visa', parent: 'visa-documentation', icon: 'family', name: 'Dependent or Family Visa Documentation',
     short: 'Organise relationship, identity and sponsor documents for spouses, children and other eligible family members.',
-    title: 'Dependent and Family Visa Assistance | Career Consultancy',
-    meta: 'Help organising documents for dependent and family visa applications from published requirements. The destination authority decides.',
-    h1: 'Dependent and family visa assistance',
+    title: 'Dependent and Family Visa Documentation | Career Consultancy',
+    meta: 'Help organising documents for dependent and family visa applications from published requirements. We do not issue visas; the authority decides.',
+    h1: 'Dependent and family visa documentation support',
     intro: 'Dependent and family routes depend on a relationship to a person who already holds a visa or status. We help you understand which relationships the authority recognises and organise the evidence it asks for.',
     audience: ['Spouses and partners joining someone abroad', 'Parents arranging for children to join', 'Sponsors who want a second review of the family file'],
     process: [

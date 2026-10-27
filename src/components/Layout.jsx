@@ -3,6 +3,7 @@ import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import SpotlightCursor from './SpotlightCursor.jsx';
 import Breadcrumbs from './Breadcrumbs.jsx';
+import MobileActionBar from './MobileActionBar.jsx';
 import { ConsultProvider } from '../lib/consult.jsx';
 
 export default function Layout({ crumbs, children }) {
@@ -16,6 +17,7 @@ export default function Layout({ crumbs, children }) {
         {children}
       </main>
       <Footer />
+      <MobileActionBar />
       <SpotlightCursor />
     </ConsultProvider>
   );

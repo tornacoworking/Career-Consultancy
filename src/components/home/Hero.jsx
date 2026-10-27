@@ -17,7 +17,7 @@ export default function Hero() {
             Your goals. Your <span className="accent">next&nbsp;step.</span> Our guidance.
           </h1>
           <p className="lede">
-            Get personalised guidance for visa applications, genuine experience documentation, online certifications and real-time project training, wherever you are in India.
+            Get genuine experience certificates from your past employers, prepare your visa documentation carefully (we do not offer visas, only the documents you need to apply), and build real skills with project training, wherever you are in India.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 lg:justify-start">
             <ConsultLink arrow>Get Free Consultation</ConsultLink>

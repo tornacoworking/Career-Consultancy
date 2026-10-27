@@ -7,7 +7,7 @@ export default function ServiceComparison({ headingId = 'compare-h' }) {
     <section className="section" id="compare" aria-labelledby={headingId}>
       <div className="wrap">
         <SectionHead eyebrow="Compare" id={headingId}
-          lede="Four services, four different jobs. Here is what each is for, who typically uses it, and how it begins.">
+          lede="Three services, three different jobs. Here is what each is for, who typically uses it, and how it begins.">
           Which service is <span className="accent">right for you?</span>
         </SectionHead>
         <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,16rem),1fr))] gap-x-8 border-t border-ink">

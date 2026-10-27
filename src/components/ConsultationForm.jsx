@@ -25,9 +25,9 @@ export function isValidPhone(raw) {
 
 /** Wording for the conditional sub-service field, by main service. */
 const SUB_LABEL = {
-  'visa-services': 'Type of visa',
-  'experience-documents': 'Type of documentation help',
-  'online-training': 'Preferred training domain',
+  'visa-documentation': 'Type of visa',
+  'experience-certificate': 'Type of documentation help',
+  'real-time-project-training': 'Preferred training domain',
 };
 
 /** Turns URL parameters or CTA props into the form's starting values, ignoring anything unknown. */
@@ -39,7 +39,7 @@ function initialValues(prefill = {}) {
     name: '', email: '', phone: '',
     city: CITY_BY_SLUG[prefill.city] ? prefill.city : '', otherCity: '',
     service, sub,
-    destination: service === 'visa-services' && DESTINATIONS.some((d) => d.slug === prefill.destination) ? prefill.destination : '',
+    destination: service === 'visa-documentation' && DESTINATIONS.some((d) => d.slug === prefill.destination) ? prefill.destination : '',
     preferred: 'email', message: '', consent: false, _honey: '',
   };
 }
@@ -141,7 +141,7 @@ export default function ConsultationForm({ prefill, idPrefix = 'f', heading, hea
   }
 
   const err = (k) => errors[id(k)];
-  const showDestination = v.service === 'visa-services';
+  const showDestination = v.service === 'visa-documentation';
   const showSub = subs.length > 0;
 
   return (
@@ -186,7 +186,7 @@ export default function ConsultationForm({ prefill, idPrefix = 'f', heading, hea
             <Field id={id('sub')} label={SUB_LABEL[v.service] ?? 'Sub-service'} optional>
               <select {...describe(id('sub'))} name="sub_service" className="field-input" value={v.sub} onChange={set('sub')}>
                 <option value="">Not sure yet</option>
-                {subs.map((s) => <option key={s.slug} value={s.slug}>{v.service === 'online-training' ? s.domain : s.name}</option>)}
+                {subs.map((s) => <option key={s.slug} value={s.slug}>{v.service === 'real-time-project-training' ? s.domain : s.name}</option>)}
               </select>
             </Field>
           )}

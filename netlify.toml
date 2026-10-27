@@ -26,23 +26,49 @@
   status = 200
   force = true
 
-# The site's service URLs are /services/experience-documents/ and /services/online-training/.
-# These permanent redirects make the alternative paths people may link to land on the right page.
+# The site's service URLs are /services/real-time-project-training/, /services/visa-documentation/
+# and /services/experience-certificate/. These permanent redirects send earlier URLs (and the retired
+# certification page) to the right place.
+
+[[redirects]]
+  from = "/services/experience-documents"
+  to = "/services/experience-certificate/"
+  status = 301
+[[redirects]]
+  from = "/services/experience-documents/*"
+  to = "/services/experience-certificate/:splat"
+  status = 301
 [[redirects]]
   from = "/services/experience-document-assistance"
-  to = "/services/experience-documents/"
+  to = "/services/experience-certificate/"
   status = 301
 [[redirects]]
   from = "/services/experience-document-assistance/*"
-  to = "/services/experience-documents/:splat"
+  to = "/services/experience-certificate/:splat"
   status = 301
 [[redirects]]
-  from = "/services/real-time-project-training"
-  to = "/services/online-training/"
+  from = "/services/online-training"
+  to = "/services/real-time-project-training/"
   status = 301
 [[redirects]]
-  from = "/services/real-time-project-training/*"
-  to = "/services/online-training/:splat"
+  from = "/services/online-training/*"
+  to = "/services/real-time-project-training/:splat"
+  status = 301
+[[redirects]]
+  from = "/services/visa-services"
+  to = "/services/visa-documentation/"
+  status = 301
+[[redirects]]
+  from = "/services/visa-services/*"
+  to = "/services/visa-documentation/:splat"
+  status = 301
+[[redirects]]
+  from = "/services/online-certifications"
+  to = "/services/real-time-project-training/"
+  status = 301
+[[redirects]]
+  from = "/services/online-certifications/*"
+  to = "/services/real-time-project-training/"
   status = 301
 
 [[headers]]
