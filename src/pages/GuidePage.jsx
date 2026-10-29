@@ -38,7 +38,7 @@ export default function GuidePage({ guide: g }) {
       <PageHero eyebrow={`Guide · ${g.read}`} title={g.h1} lede={g.summary} narrow>
         <p className="font-mono text-[.8125rem] text-muted">Updated {BUILD_DATE} · By the {SITE.name} team</p>
       </PageHero>
-      <div className="wrap grid gap-12 pt-[clamp(2.5rem,5vw,4rem)] pb-[clamp(4rem,3rem+5vw,8rem)] lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-[clamp(3rem,6vw,6rem)]">
+      <div className="wrap grid gap-12 pt-[clamp(1rem,3vw,1.875rem)] pb-[clamp(1.875rem,1.375rem+3vw,3.875rem)] lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-[clamp(3rem,6vw,6rem)]">
         <article ref={ref} className="prose-cn guide min-w-0">
           {g.sections.map((x, i) => (
             <section key={x.title} id={`g${i}`}>

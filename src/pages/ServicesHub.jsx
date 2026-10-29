@@ -9,8 +9,9 @@ export default function ServicesHub() {
   return (
     <>
       <PageHero eyebrow="Services" title="Our services"
-        lede="Career Consultancy offers four services, all delivered online. Each starts with a conversation about your situation and a written scope, timeline and fee." />
-      <section className="pt-4 pb-[clamp(4rem,3rem+5vw,8rem)]">
+        lede="Career Consultancy offers three services, all delivered online. Each starts with a conversation about your situation and a written scope, timeline and fee."
+        art={{ src: 'hero.jpg', width: 1040, height: 910, alt: 'Two professionals in a consultation at a desk, going through documents together' }} />
+      <section className="pt-4 pb-[clamp(1.875rem,1.375rem+3vw,3.875rem)]">
         <div className="wrap">
           <ol className="border-t border-ink">
             {SERVICES.map((s) => (

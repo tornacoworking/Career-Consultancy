@@ -56,11 +56,11 @@
   .wrap { @apply mx-auto w-full max-w-[1280px] px-[clamp(1rem,4vw,3rem)]; }
   .wrap-narrow { @apply mx-auto w-full max-w-[860px] px-[clamp(1rem,4vw,3rem)]; }
   /* content-visibility lets the browser skip style/layout for sections that are off screen. */
-  .section { padding-block: clamp(4rem, 3rem + 5vw, 8rem); content-visibility: auto; contain-intrinsic-size: auto 700px; }
+  .section { padding-block: clamp(1.875rem, 1.375rem + 3vw, 3.875rem); content-visibility: auto; contain-intrinsic-size: auto 700px; }
 
   .eyebrow { @apply inline-flex items-center gap-[.6em] font-mono text-[.8125rem] leading-tight font-medium uppercase tracking-[.08em] text-muted; }
   .eyebrow::before { content: ""; @apply size-[.55em] shrink-0 rounded-full bg-brand; }
-  .on-dark .eyebrow { @apply text-dark-muted; }
+  .on-dark .eyebrow, .on-dark .lede { @apply text-dark-muted; }
 
   .lede { @apply max-w-[40rem] text-lede leading-[1.55] text-muted; }
   .h-section { @apply text-section; }
@@ -96,6 +96,24 @@
   .steps > li::before { content: counter(s, decimal-leading-zero); @apply row-span-2 font-mono text-[.9375rem] leading-relaxed text-brand-ink; }
   .steps h3 { @apply text-lg tracking-tight; }
   .steps p { @apply text-muted; }
+
+  /* Data tables. `.stack` turns each row into a labelled card below 48rem, so no sideways scrolling is needed. */
+  .data-table { @apply w-full border-collapse text-left text-[.9375rem] leading-snug; }
+  .data-table th, .data-table td { @apply px-4 py-3.5 align-top; }
+  .data-table thead th { @apply border-b-2 border-ink bg-grey font-mono text-[.8125rem] font-medium uppercase tracking-[.08em] text-ink; }
+  .data-table tbody tr { @apply border-b border-line odd:bg-white even:bg-paper; }
+  .data-table tbody th { @apply font-display text-base font-semibold; }
+  .data-table td { @apply text-muted; }
+  .table-scroll { @apply overflow-x-auto border border-line bg-white; }
+  .table-scroll:focus-visible { outline-offset: 0; }
+  @media (max-width: 47.99rem) {
+    .data-table.stack thead { @apply sr-only; }
+    .data-table.stack, .data-table.stack tbody, .data-table.stack tr, .data-table.stack th, .data-table.stack td { display: block; width: 100%; }
+    .data-table.stack tbody tr { @apply mb-3 border border-line bg-white; }
+    .data-table.stack tbody th { @apply bg-grey px-4 py-3; }
+    .data-table.stack td { @apply px-4 py-2.5; }
+    .data-table.stack td::before { content: attr(data-label); @apply mb-0.5 block font-mono text-[.75rem] font-medium uppercase tracking-[.08em] text-ink; }
+  }
 
   /* FAQ accordion (<details>) */
   .faq { @apply border-b border-line-strong; }
@@ -199,3 +217,29 @@ body:has(dialog[open]) .cursor { opacity: 0 !important; }
 .guide .template pre { margin: 0; width: 100%; white-space: pre-wrap; overflow-wrap: anywhere; font: 400 .9375rem/1.6 var(--font-mono); }
 .guide .template .btn-ghost { border-color: var(--color-paper); color: var(--color-paper); }
 .guide .template .btn-ghost:hover { background: var(--color-paper); color: var(--color-ink); }
+
+/* Services dropdown in the header. On phones it is an always-open indented list inside the menu. */
+.nav-drop { display: grid; margin: 0 0 .5rem; padding: 0 0 0 1rem; list-style: none; border-left: 2px solid var(--color-line); }
+.nav-drop a { display: flex; gap: .75rem; align-items: flex-start; padding: .65rem 0; text-decoration: none; color: var(--color-ink); }
+.nav-drop-num { font-family: var(--font-mono); font-size: .8125rem; color: var(--color-brand-ink); padding-top: .2rem; }
+.nav-drop-name { font-weight: 600; line-height: 1.25; }
+.nav-drop-sub { display: none; font-size: .8125rem; line-height: 1.4; color: var(--color-muted); font-weight: 400; }
+.nav-drop-all a { font-weight: 600; color: var(--color-brand-ink); }
+.nav-drop a[aria-current="page"] .nav-drop-name { color: var(--color-brand-ink); }
+
+@media (min-width: 60rem) {
+  .nav-drop {
+    position: absolute; top: 100%; left: -1rem; z-index: 60; width: 22rem; margin: 0; padding: .5rem;
+    background: #fff; border: 1px solid var(--color-line); border-left-width: 1px; border-radius: 6px;
+    box-shadow: 0 18px 40px -20px rgba(25, 25, 25, .45);
+    visibility: hidden; opacity: 0; transform: translateY(6px);
+    transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+  }
+  .nav-item:hover .nav-drop, .nav-item:focus-within .nav-drop, .nav-drop[data-open="true"] {
+    visibility: visible; opacity: 1; transform: none; transition-delay: 0s;
+  }
+  .nav-drop a { padding: .7rem .75rem; border-radius: 4px; }
+  .nav-drop a:hover, .nav-drop a:focus-visible { background: var(--color-grey); }
+  .nav-drop-sub { display: block; }
+  .nav-drop-all { border-top: 1px solid var(--color-line); margin-top: .25rem; padding-top: .25rem; }
+}

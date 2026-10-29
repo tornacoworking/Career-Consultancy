@@ -7,7 +7,7 @@ import ConsultLink from '../ConsultLink.jsx';
 import { useDesktop, useFinePointer } from '../../lib/hooks.js';
 import { SERVICES, serviceUrl } from '../../data/services.js';
 
-const ROWS = ['lg:row-start-1', 'lg:row-start-2', 'lg:row-start-3', 'lg:row-start-4'];
+const ROWS = ['lg:row-start-1', 'lg:row-start-2', 'lg:row-start-3'];
 
 export default function ServiceExplorer() {
   const [current, setCurrent] = useState(0);
@@ -33,10 +33,10 @@ export default function ServiceExplorer() {
       <div className="wrap">
         <SectionHead eyebrow="What we do" id="svc-h"
           lede="Select a service to see what it covers. Each one has its own page with the full scope, requirements and common questions.">
-          Four services, <span className="accent">one clear</span> process.
+          Three services, <span className="accent">one clear</span> process.
         </SectionHead>
 
-        <div className="border-t border-ink lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-[clamp(2.5rem,5vw,5rem)]">
+        <div className="border-t border-ink lg:grid lg:grid-cols-2 lg:grid-rows-[repeat(3,auto)_1fr] lg:items-start lg:gap-x-[clamp(2.5rem,5vw,5rem)]">
           {SERVICES.map((s, i) => {
             const open = i === shown;
             return (
@@ -74,6 +74,14 @@ export default function ServiceExplorer() {
               </div>
             );
           })}
+          <figure className="relative mt-8 hidden min-h-[14rem] self-stretch overflow-hidden rounded-brand lg:col-start-1 lg:row-start-4 lg:block">
+            <img className="photo absolute inset-0 size-full object-cover" src={`${import.meta.env.BASE_URL}images/about.jpg`}
+              alt="A consultant and a client talking through their situation across a table" loading="lazy" decoding="async" />
+            <figcaption className="absolute inset-x-0 bottom-0 grid justify-items-start gap-3 bg-gradient-to-t from-ink/90 to-transparent p-6 pt-20 text-white">
+              <span className="font-display text-xl leading-tight font-bold">Not sure which one you need?</span>
+              <ConsultLink small arrow>Get Consultation</ConsultLink>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>

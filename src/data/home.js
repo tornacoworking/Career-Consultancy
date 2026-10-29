@@ -3,20 +3,16 @@
 
 export const NEEDS = [
   {
-    "slug": "experience-documents",
-    "label": "I need proof of my past work"
+    "slug": "experience-certificate",
+    "label": "I need an experience certificate from a past employer"
   },
   {
-    "slug": "visa-services",
-    "label": "I'm preparing a visa application"
+    "slug": "visa-documentation",
+    "label": "I'm preparing documents for a visa application"
   },
   {
-    "slug": "online-certifications",
-    "label": "I want a recognised credential"
-  },
-  {
-    "slug": "online-training",
-    "label": "I want to learn a new skill"
+    "slug": "real-time-project-training",
+    "label": "I want hands-on project experience"
   }
 ];
 
@@ -83,35 +79,30 @@ export const TRANSPARENCY = [
 
 export const COMMITMENTS = [
   "We never create or alter official documents.",
-  "We never guarantee visa approvals, exam results or jobs.",
-  "We name the organisation that issues every certificate.",
+  "We do not offer or issue visas. We only help with the documentation needed to apply for one.",
+  "We never guarantee visa approvals or jobs.",
+  "Experience certificates come only from the employer who issues them.",
   "We only ask for personal information when the service needs it."
 ];
 
 export const AUDIENCES = [
   {
     "title": "Job switchers",
-    "text": "Need proof of past roles for a new employer.",
-    "slug": "experience-documents",
+    "text": "Need an experience certificate for a new employer.",
+    "slug": "experience-certificate",
     "num": "01"
   },
   {
     "title": "Going abroad",
-    "text": "Preparing a work, study or visit visa application.",
-    "slug": "visa-services",
+    "text": "Preparing the documents for a work, study or visit visa application.",
+    "slug": "visa-documentation",
     "num": "02"
   },
   {
-    "title": "Upskilling",
-    "text": "Want a credential employers can verify.",
-    "slug": "online-certifications",
+    "title": "Learners and graduates",
+    "text": "Want real project work to show, not just a course.",
+    "slug": "real-time-project-training",
     "num": "03"
-  },
-  {
-    "title": "Learning online",
-    "text": "Building a skill around work or study.",
-    "slug": "online-training",
-    "num": "04"
   }
 ];
 
@@ -126,15 +117,15 @@ export const GENERAL_FAQS = [
   },
   {
     "q": "How long will it take?",
-    "a": "Timelines vary by service. Some steps depend on employers, certification providers or authorities, so we give you a realistic estimate and explain which parts are outside our control."
+    "a": "Timelines vary by service. Some steps depend on employers, trainers or authorities, so we give you a realistic estimate and explain which parts are outside our control."
   },
   {
     "q": "Do I need to visit an office?",
-    "a": "No. Our services are delivered online, so you can work with us from wherever you are."
+    "a": "No. Our services are delivered online, so you can work with us from wherever you are. If you would like to meet in person, our main branch is in Baner, Pune. Please contact us first so we can arrange a time."
   },
   {
     "q": "Can you guarantee a result?",
-    "a": "No. We cannot guarantee visa approvals, exam results, certificates or jobs. We promise to deliver the assistance we agree with you, clearly and carefully."
+    "a": "No. We cannot guarantee visa approvals, employer responses or jobs. We promise to deliver the assistance we agree with you, clearly and carefully."
   },
   {
     "q": "What happens to the information I send?",

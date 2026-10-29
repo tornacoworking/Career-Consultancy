@@ -18,6 +18,10 @@ const PATHS = {
   close: 'M6 6l12 12M18 6L6 18',
   file: 'M7 3h7l5 5v13H7zM14 3v5h5M10 13h6M10 17h6',
   cert: 'M5 4h14v11H5zM9 20l3-2 3 2v-5H9zM8 8h8M8 11h5',
+  mail: 'M3 6h18v12H3zM3 7l9 6 9-6',
+  phone: 'M6 3h3l1.5 4-2 1.5a11 11 0 005 5L15 11.5l4 1.5v3a2 2 0 01-2 2A14 14 0 014 5a2 2 0 012-2z',
+  users: 'M9 11a3 3 0 100-6 3 3 0 000 6zM3 20v-1a5 5 0 0110 0v1M16 11a2.5 2.5 0 100-5M17 14.5a4 4 0 014 4V20',
+  list: 'M9 6h12M9 12h12M9 18h12M4 6h.01M4 12h.01M4 18h.01',
 };
 
 export default function Icon({ name, size = 24, className = '' }) {

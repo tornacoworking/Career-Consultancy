@@ -35,7 +35,10 @@ src/
   index.css                   Tailwind import, brand theme tokens (@theme), shared component classes
   data/                       ALL copy and business details. Edit these first.
     site.js                     name, domain, email, phone, form settings, stats, reviews, programmes
-    services.js                 the four services (scope, requirements, steps, FAQs…) + sub-service helpers
+    services.js                 the three services (scope, requirements, steps, FAQs…) + sub-service helpers.
+                                SERVICE_ORDER sets the order everywhere: experience certificate always first
+    requirements.js             document tables: experience documents, "what we need from you", visa requirements
+                                matrix, training needs, and the verification cards ("What else do we have for you?")
     cities.js                   the 30 priority cities, in display order (see "Cities and sub-services")
     visaServices.js             6 visa sub-services + the editable destination-country list
     experienceDocumentServices.js  3 document-help sub-services + genuine-vs-fabricated comparison
@@ -83,7 +86,7 @@ Repeated patterns are component classes in the same file: `btn btn-primary|btn-d
 
 **Sub-services** (14 pages) are data too: `visaServices.js`, `experienceDocumentServices.js`, `trainingServices.js`. They render through `SubServicePage` at `/services/<service>/<sub>/`.
 
-The URLs from the original brief (`/services/experience-document-assistance/…`, `/services/real-time-project-training/…`) are 301-redirected in `netlify.toml` to the existing `/services/experience-documents/…` and `/services/online-training/…`.
+The site has three services: `/services/real-time-project-training/`, `/services/visa-documentation/` and `/services/experience-certificate/`. Earlier URLs (`/services/real-time-project-training/`, `/services/visa-services/`, `/services/experience-documents/`, `/services/experience-document-assistance/`) and the retired `/services/online-certifications/` page are 301-redirected in `netlify.toml`.
 
 **Selected city:** choosing a city (hero explorer, directory, or visiting a city page) is held in memory only (`src/lib/consult.jsx`). It adds a "your city" line to service pages and prefills the consultation form. Nothing is persisted, and choosing a city is never required.
 
@@ -96,11 +99,15 @@ The URLs from the original brief (`/services/experience-document-assistance/…`
 3. Set `popular: true` to show it as a hero shortcut. Use `published: false` to keep a draft out of the site and the sitemap.
 4. Run `npm run check`. The page, sitemap entry, directory link and form option appear automatically.
 
+### Document tables and visa wording
+
+`src/data/requirements.js` feeds the tables on the home page, every city page, the service pages and the sub-service pages (`components/Requirements.jsx`, `DocumentsSection.jsx`, `WhatElse.jsx`). Every row describes help with genuine records. The site never offers to create or alter documents, and the visa pages state that we do not issue visas, only help with the documentation to apply for one. Visa rows are a general guide, not an official list.
+
 ### Add a service or sub-service
 
 - **Sub-service:** add an object to the relevant array in `visaServices.js`, `experienceDocumentServices.js` or `trainingServices.js` (copy an existing one; `parent` must be the main service slug). Its page, sitemap entry and links appear automatically.
 - **Destination country:** add to `DESTINATIONS` in `visaServices.js`.
-- **Main service:** add to `SERVICES` in `services.js`, then review `HeroReadiness.jsx` (`SHORT` labels) and `ServiceExplorer.jsx`, which assumes four rows.
+- **Main service:** add to `SERVICES` in `services.js`, then review `HeroReadiness.jsx` (`SHORT` labels) and `ServiceExplorer.jsx`, which assumes three rows (`ROWS` and `row-span-3`).
 
 ## Forms → email
 
@@ -143,7 +150,7 @@ Serve the build and audit it with Chrome:
 
 ```bash
 npm run serve                                   # or any static server for dist/
-npx lighthouse http://localhost:3000/ --view    # also try /cities/pune/ and /services/visa-services/study-visa/
+npx lighthouse http://localhost:3000/ --view    # also try /cities/pune/ and /services/visa-documentation/study-visa/
 ```
 
 Targets: SEO, Accessibility, Best Practices and Performance all 90+. Measure on the deployed site (with compression and CDN caching) as well as locally. Performance varies a lot between runs and machines, so run it several times and on a real phone before trusting a number.
@@ -171,7 +178,7 @@ It also works on any static host (Vercel, Cloudflare Pages, Hostinger, cPanel). 
 - **Router.** The site keeps its own small, dependency-free router (real URLs, crawlable `<a href>`, prerendered). The original brief named React Router DOM, but swapping it would not improve SEO and would add a dependency.
 - **Brand colours.** The existing orange-and-charcoal identity and logo were kept rather than replaced with navy and gold.
 - **Contact email.** `SITE.email` is still the placeholder `hello@careerconsultancy.example` (shown on the contact page, footer and legal pages). Set a real public address.
-- **Owner to confirm:** the Java track (the reference site mentions Java only alongside Selenium testing), every training duration, schedule, trainer and fee (`TRAINING_PROGRAMMES` is empty), and the destination-country list.
+- **Owner to confirm:** whether Java runs as its own track, every training duration, schedule, trainer and fee (`TRAINING_PROGRAMMES` is empty), and the destination-country list.
 
 ## Replace the sample reviews with real ones
 

@@ -1,6 +1,6 @@
 /** Feedback endpoint (/api/feedback). Same delivery options as enquiry.mjs (Resend or webhook).
  *  Reviews are never published automatically: they are emailed/forwarded for the owner to approve. */
-const SERVICES = new Set(['experience-documents', 'visa-services', 'online-certifications', 'online-training']);
+const SERVICES = new Set(['real-time-project-training', 'visa-documentation', 'experience-certificate']);
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const clean = (v, max) => String(v ?? '').replace(/[\u0000-\u0008\u000B-\u001F\u007F]/g, '').trim().slice(0, max);
 const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));

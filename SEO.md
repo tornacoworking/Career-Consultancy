@@ -6,11 +6,10 @@ These are starting points based on how people typically search for these service
 
 | Page | Primary intent | Seed terms | Avoid targeting |
 |---|---|---|---|
-| `/services/experience-documents/` | Get genuine work-history proof | experience letter from previous employer, how to get relieving letter, experience certificate request letter, employment verification documents | "experience certificate provider", "buy experience letter", anything implying documents are created for you (also a legal and reputational risk) |
-| `/services/visa-services/` | Prepare a visa application | visa application assistance, visa document checklist, visa form filling help, work visa documents required | "guaranteed visa", "100% visa approval" |
-| `/services/online-certifications/` | Choose a credible credential | online certification courses, how to verify a certificate, best certification for [role], certification guidance | "accredited certificate" unless verified |
-| `/services/online-training/` | Learn a skill online | online training courses, live online classes for professionals, online skill training | course names until programmes are confirmed |
-| `/faqs/` | Long-tail questions | visa consultant fees, how long to get experience letter, is online certificate valid | — |
+| `/services/experience-certificate/` | Get genuine work-history proof | experience certificate from previous employer, how to get relieving letter, experience certificate request letter, employment verification documents | "experience certificate provider", "buy experience letter", anything implying certificates are created for you (also a legal and reputational risk) |
+| `/services/visa-documentation/` | Prepare a visa application | visa documentation support, visa document checklist, visa form filling help, work visa documents required | "guaranteed visa", "100% visa approval" |
+| `/services/real-time-project-training/` | Learn a skill by building a project | real time project training, live project training online, project-based IT training | course names until programmes are confirmed |
+| `/faqs/` | Long-tail questions | visa consultant fees, how long to get experience letter, how to check an experience certificate is genuine | — |
 
 Content guidance: answer the question in the first paragraph, use the searcher's words in H2s naturally, link between related service pages (already in place), and add a section only when it is genuinely useful.
 

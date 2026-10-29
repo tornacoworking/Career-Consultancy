@@ -1,15 +1,19 @@
-import { ServicePhoto } from '../components/Photo.jsx';
+import { BannerPhoto, FillPhoto, ServicePhoto } from '../components/Photo.jsx';
 import CtaBand from '../components/CtaBand.jsx';
 import Toc from '../components/Toc.jsx';
+import WhatElse from '../components/WhatElse.jsx';
+import { ContentsTable, ExperienceDocsTable, ExperienceNeedsTable, ExperienceWhat, TrainingNeedsTable, VisaClarity, VisaMatrix } from '../components/Requirements.jsx';
 import Checklist from '../components/Checklist.jsx';
 import { Arrow, Eyebrow, FaqList, Html } from '../components/ui.jsx';
 import ConsultLink from '../components/ConsultLink.jsx';
-import { CourseVsProject, DestinationPicker, FormatList, GenuineCompare, SubServiceGrid } from '../components/ServiceSections.jsx';
+import ConsultationForm from '../components/ConsultationForm.jsx';
+import { CourseVsProject, DestinationPicker, FeatureSection, FormatList, GenuineSection, IndustrySection, LocationsServed, RichLocations, RichSection, SubServiceGrid, WhySection } from '../components/ServiceSections.jsx';
 import { Link } from '../lib/router.jsx';
 import { useConsult } from '../lib/consult.jsx';
 import { CITY_BY_SLUG, cityUrl } from '../data/cities.js';
 import { SERVICE_BY_SLUG, serviceUrl, subServicesOf } from '../data/services.js';
 import { TRAINING_PROGRAMMES } from '../data/site.js';
+import { RICH } from '../data/serviceRich.js';
 
 function Programmes({ slug }) {
   if (TRAINING_PROGRAMMES.length) {
@@ -37,33 +41,49 @@ function Programmes({ slug }) {
   );
 }
 
+// A section's content followed by a clear enquiry button.
+const withCta = (node, slug, label = 'Get Consultation') => (
+  <>
+    {node}
+    <div className="mt-2"><ConsultLink service={slug} small arrow>{label}</ConsultLink></div>
+  </>
+);
+
 // Extra sections for the services that have sub-service pages. Each is { id, title, intro, node }.
 function extraSections(s, subs) {
   if (!subs.length) return [];
   const types = { id: 'types', intro: null, node: <SubServiceGrid items={subs} /> };
-  if (s.slug === 'visa-services') {
-    return [
-      { ...types, title: 'Types of visa support' },
-      { id: 'destinations', title: 'Choose a destination', intro: null, node: <DestinationPicker /> },
-    ];
+  const rich = RICH[s.slug];
+  if (rich) {
+    const parts = {
+      types: { ...types, title: s.slug === 'visa-documentation' ? 'Types of visa support' : 'Training domains' },
+      requirements: { id: 'requirements', title: 'Visa documentation requirements', intro: 'These are the documents commonly asked for, by visa purpose. We help you gather, check and organise them. We do not issue visas, and the authority decides every application.', node: withCta(<VisaMatrix />, s.slug) },
+      needs: { id: 'needs', title: 'What we need from you before you enrol', intro: 'A few details let us recommend the right track and send you the programme details in writing.', node: withCta(<TrainingNeedsTable />, s.slug, 'Discuss This Training') },
+      destinations: { id: 'destinations', title: 'Choose a destination', intro: null, node: <DestinationPicker /> },
+      'course-or-project': { id: 'course-or-project', title: 'Course training or live project training', intro: 'Both are hands-on. The right starting point depends on how much you already know.', node: <CourseVsProject /> },
+      formats: { id: 'formats', title: 'Learning formats', intro: 'Formats are confirmed in writing before you enrol.', node: <FormatList /> },
+      locations: { id: 'locations', title: 'Locations we serve', intro: null, node: <RichLocations cfg={rich.locations} hash={CITY_HASH[s.slug]} /> },
+      ...Object.fromEntries(rich.sections.map((c) => [c.id, { id: c.id, title: c.title, intro: c.intro, node: <RichSection cfg={c} /> }])),
+    };
+    return rich.order.map((id) => parts[id]);
   }
-  if (s.slug === 'experience-documents') {
+  if (s.slug === 'experience-certificate') {
     return [
+      { id: 'what-is', title: 'What is an experience certificate?', intro: 'The short version, for anyone who has not needed one before.', node: withCta(<ExperienceWhat />, s.slug) },
       { ...types, title: 'Types of documentation help' },
-      { id: 'genuine', title: 'Genuine records only', intro: 'Helping you obtain and organise real documents is very different from fabricating a work history. We do the first and never the second.', node: <GenuineCompare /> },
-    ];
-  }
-  if (s.slug === 'online-training') {
-    return [
-      { ...types, title: 'Training domains' },
-      { id: 'course-or-project', title: 'Course training or live project training', intro: 'Both are hands-on. The right starting point depends on how much you already know.', node: <CourseVsProject /> },
-      { id: 'formats', title: 'Learning formats', intro: 'Formats are confirmed in writing before you enrol.', node: <FormatList /> },
+      { id: 'docs-we-help', title: 'Documents we help you obtain', intro: 'Every document below is a genuine record issued by your employer or your own bank. We help you request, check and organise them, and we never produce them.', node: withCta(<ExperienceDocsTable />, s.slug) },
+      { id: 'needs', title: 'What we need from you', intro: 'Use the checklist above to tick things off. This table explains why each item matters.', node: withCta(<ExperienceNeedsTable />, s.slug) },
+      { id: 'why', title: 'Why an experience certificate matters', intro: 'It is one of the first things anyone checks when they want to confirm your career. These are the situations where we see it asked for most.', node: <WhySection /> },
+      { id: 'industries', title: 'Industries we support', intro: 'Every sector issues letters in its own way. Here is what we have learned to look out for.', node: <IndustrySection /> },
+      { id: 'features', title: 'What makes this service different', intro: 'Anyone can tell you to email HR. This is what we add around that request.', node: <FeatureSection /> },
+      { id: 'genuine', title: 'Genuine records only', intro: 'Helping you obtain and organise real documents is very different from fabricating a work history. We do the first and never the second.', node: <GenuineSection /> },
+      { id: 'locations', title: 'Locations we serve', intro: null, node: <LocationsServed /> },
     ];
   }
   return [];
 }
 
-const CITY_HASH = { 'visa-services': 'visa', 'experience-documents': 'documents', 'online-training': 'training' };
+const CITY_HASH = { 'visa-documentation': 'visa', 'experience-certificate': 'documents', 'real-time-project-training': 'training' };
 
 export default function ServicePage({ service: s }) {
   const { city: citySlug } = useConsult();
@@ -72,14 +92,16 @@ export default function ServicePage({ service: s }) {
   const extras = extraSections(s, subs);
   const toc = [['scope', 'What we help with'], ['important', 'Important to know'], ['who', 'Who this is for'], ['ready', 'What to keep ready'], ['process', 'How it works']];
   extras.forEach((x) => toc.push([x.id, x.title]));
-  if (s.slug === 'online-training') toc.push(['programmes', 'Current programmes']);
+  if (s.slug === 'real-time-project-training') toc.push(['programmes', 'Current programmes']);
   else if (s.extra) toc.push(['more', s.extra.title]);
   toc.push(['questions', 'Common questions'], ['related', 'Related services']);
+  if (s.slug === 'experience-certificate') toc.push(['verification', 'What else do we have for you?']);
+  if (s.banner) toc.push(['enquiry', 'Send an enquiry']);
 
   return (
     <>
-      <section className="pt-[clamp(2rem,5vw,4rem)] pb-[clamp(2.5rem,5vw,4rem)]">
-        <div className="wrap grid items-center gap-[clamp(2rem,5vw,4rem)] lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
+      <section className="pt-[clamp(2rem,5vw,4rem)] pb-[clamp(1rem,3vw,1.875rem)]">
+        <div className={`wrap grid items-center gap-[clamp(2rem,5vw,4rem)] ${s.banner ? '' : 'lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]'}`}>
           <div className="grid min-w-0 justify-items-center gap-[1.1rem] text-center lg:justify-items-start lg:text-left">
             <Eyebrow>Service {s.num} · {s.name}</Eyebrow>
             <h1 className="page-h my-1" data-spotlight>{s.h1}</h1>
@@ -94,10 +116,20 @@ export default function ServicePage({ service: s }) {
               </p>
             )}
           </div>
-          <figure className="mx-auto w-full max-w-[560px] min-w-0">
-            <ServicePhoto slug={s.slug} alt={s.art_label} eager className="h-auto w-full rounded-brand object-cover" />
-          </figure>
+          {!s.banner && (
+            <figure className="mx-auto w-full max-w-[560px] min-w-0">
+              <ServicePhoto slug={s.slug} alt={s.art_label} eager className="h-auto w-full rounded-brand object-cover" />
+            </figure>
+          )}
         </div>
+        {s.banner && (
+          <div className="wrap mt-[clamp(2.5rem,5vw,3.5rem)]">
+            <figure className="relative overflow-hidden rounded-brand">
+              <BannerPhoto src={s.banner.src} alt={s.banner.alt} className="h-auto min-h-[14rem] w-full object-cover" />
+              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/85 to-transparent p-[clamp(1rem,3vw,2rem)] pt-16 font-display text-[clamp(1.05rem,.9rem+1vw,1.6rem)] leading-snug font-semibold text-white">{s.banner.caption}</figcaption>
+            </figure>
+          </div>
+        )}
         <div className="wrap">
           <dl className="mt-[clamp(2.5rem,5vw,3.5rem)] grid grid-cols-[repeat(auto-fit,minmax(min(100%,200px),1fr))] border-t border-ink text-center lg:text-left">
             {s.facts.map((f) => (
@@ -107,11 +139,13 @@ export default function ServicePage({ service: s }) {
               </div>
             ))}
           </dl>
+          {s.slug === 'visa-documentation' && <VisaClarity cta className="mt-8" />}
         </div>
       </section>
 
-      <div className="wrap grid gap-12 pt-[clamp(2.5rem,5vw,4rem)] pb-[clamp(4rem,3rem+5vw,8rem)] lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-[clamp(3rem,6vw,6rem)]">
+      <div className="wrap grid gap-12 pt-[clamp(1rem,3vw,1.875rem)] pb-[clamp(1.875rem,1.375rem+3vw,3.875rem)] lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-[clamp(3rem,6vw,6rem)]">
         <article className="prose-cn min-w-0">
+          <ContentsTable items={toc} />
           <section id="scope">
             <h2>What we help with</h2>
             <div className="mt-2 grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-x-10 gap-y-8">
@@ -148,7 +182,7 @@ export default function ServicePage({ service: s }) {
               {x.node}
             </section>
           ))}
-          {s.slug === 'online-training' ? (
+          {s.slug === 'real-time-project-training' ? (
             <section id="programmes"><h2>Current programmes</h2><Programmes slug={s.slug} /></section>
           ) : s.extra && (
             <section id="more"><h2>{s.extra.title}</h2><Html html={s.extra.html} /></section>
@@ -188,6 +222,26 @@ export default function ServicePage({ service: s }) {
           </div>
         </aside>
       </div>
+      {s.slug === 'experience-certificate' && <WhatElse />}
+      {s.banner && (
+        <section className="section bg-white" id="enquiry" aria-labelledby="enq-h">
+          <div className="wrap grid gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-[clamp(2rem,5vw,5rem)]">
+            <div className="flex flex-col gap-3 text-center lg:text-left">
+              <Eyebrow>Free consultation</Eyebrow>
+              <h2 id="enq-h" className="h-section">{s.banner.formHeading}</h2>
+              <p className="lede">{s.banner.formLede}</p>
+              {s.banner.next && (
+                <div className="mt-2 grid gap-3 text-left">
+                  <p className="label-mono text-brand-ink">What happens next</p>
+                  <ol className="steps">{s.banner.next.map((t) => <li key={t}><p className="!text-ink">{t}</p></li>)}</ol>
+                </div>
+              )}
+              {s.banner.formImage && <FillPhoto name={s.banner.formImage.src} alt={s.banner.formImage.alt} />}
+            </div>
+            <div className="min-w-0"><ConsultationForm idPrefix="svc" prefill={{ service: s.slug, city: city?.slug }} /></div>
+          </div>
+        </section>
+      )}
       <CtaBand heading="Ready for your next step?" text={`Tell us about your situation and we'll explain how our ${s.name.toLowerCase()} service can help.`}
         label="Enquire now" consult={{ service: s.slug }} />
     </>

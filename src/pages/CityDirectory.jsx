@@ -7,8 +7,9 @@ export default function CityDirectory() {
   return (
     <>
       <PageHero eyebrow="Cities" title="Guidance in your city"
-        lede={`Career Consultancy is online, so you can use any service from anywhere in India. These ${PUBLISHED_CITIES.length} city pages describe how our visa, experience document and training guidance applies where you live.`} />
-      <section className="pb-[clamp(4rem,3rem+5vw,8rem)]">
+        lede={`Career Consultancy is online, so you can use any service from anywhere in India. These ${PUBLISHED_CITIES.length} city pages describe how our experience certificate, visa documentation and project training help applies where you live.`}
+        art={{ src: 'visa-locations.jpg', width: 640, height: 800, alt: 'A traveller with a suitcase walking down a bright airport corridor' }} />
+      <section className="pb-[clamp(1.875rem,1.375rem+3vw,3.875rem)]">
         <div className="wrap">
           <CityExplorer />
           <p className="mt-10 max-w-[44rem] text-[.9375rem] text-muted">

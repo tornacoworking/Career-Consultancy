@@ -5,125 +5,140 @@ import { VISA_SUBSERVICES } from './visaServices.js';
 import { EXPERIENCE_SUBSERVICES } from './experienceDocumentServices.js';
 import { TRAINING_SUBSERVICES } from './trainingServices.js';
 
-export const SERVICES = [
+const SERVICE_LIST = [
   {
-    "slug": "experience-documents",
-    "num": "01",
-    "name": "Experience Documents",
-    "short": "Help requesting, checking and organising genuine work-history records from your employers.",
-    "title": "Experience Document Assistance | Career Consultancy",
-    "meta": "Help requesting genuine experience and relieving letters from former employers, checking records for gaps, and organising your work history for applications.",
-    "h1": "Experience document assistance",
-    "intro": "Job offers, visa applications and university admissions often ask you to prove your past work. We help you work out exactly which records are needed, request them properly from the employers who issue them, and organise everything into a clear file you can submit with confidence.",
+    "slug": "real-time-project-training",
+    "name": "Real Time Project Training",
+    "short": "Learn by building a working, industry-style project with a mentor, not just by watching lessons.",
+    "title": "Real Time Project Training | Career Consultancy",
+    "meta": "Build practical IT and digital skills on a real-time project with mentor feedback. Syllabus, schedule, trainer and fee shared in writing before you enrol.",
+    "h1": "Real time project training",
+    "intro": "Knowing a tool and having used it on a real problem are two different things. Our project training puts you on a realistic, industry-style assignment, with a mentor reviewing your work as you go, so you finish with something you built and can explain in an interview.",
     "audience": [
-      "Professionals moving to a new employer who has asked for work-history proof",
-      "Applicants for overseas jobs, visas or study programmes that require employment evidence",
-      "People returning to work after a break who need to locate older records"
+      "Students and fresh graduates who want project work to show alongside their degree",
+      "Career changers moving into IT, data, testing or digital marketing",
+      "Working professionals who want hands-on practice rather than theory alone"
     ],
     "facts": [
       {
         "label": "Delivery",
-        "value": "Online"
+        "value": "Online, live mentor-led"
       },
       {
-        "label": "Who issues the documents",
-        "value": "Your employer"
+        "label": "Learning style",
+        "value": "Build a project"
       },
       {
         "label": "Fees",
         "value": "Quoted in writing first"
       },
       {
-        "label": "Timeline",
-        "value": "Depends on employer response"
+        "label": "Before enrolling",
+        "value": "Full details in writing"
       }
     ],
-    "notice": "We do not create, alter or issue experience letters, payslips or any employment record. Only your employer, or an organisation it has authorised, can issue these documents. If a record cannot be obtained, we will tell you plainly and discuss legitimate alternatives.",
+    "notice": "The syllabus, schedule, duration, trainer and fee are confirmed with you in writing before you enrol. Training builds skills and a portfolio piece. It does not guarantee a job, a promotion or a salary, and project work must always be described honestly as training, never as paid employment.",
     "scope": [
       {
-        "title": "A checklist for your purpose",
-        "text": "We read the requirements from the organisation asking for proof and turn them into a specific list: which letters, which dates, what details each must show."
+        "title": "Choosing the right track",
+        "text": "Tell us your background and your goal. We recommend a track that fits, or tell you honestly if a different starting point would serve you better."
       },
       {
-        "title": "Requests to former employers",
-        "text": "We help you draft a clear, polite request to HR for an experience or relieving letter, including the details the receiving organisation needs to see."
+        "title": "A real-time project at the centre",
+        "text": "Every track is built around a project with a brief, milestones and deliverables, so you practise decisions and problem-solving as well as syntax."
       },
       {
-        "title": "A consistency review",
-        "text": "We check the documents you already hold for gaps and mismatches, such as dates of joining, designation and signatory details, so you can ask the issuer to correct them."
+        "title": "Mentor feedback while you build",
+        "text": "A trainer reviews your work at each milestone, points out what to fix and explains why, so mistakes become learning rather than surprises."
       },
       {
-        "title": "An organised work-history file",
-        "text": "We arrange your records in a logical order with a short covering summary, ready to upload or submit."
+        "title": "Work you can talk about",
+        "text": "You finish with a documented project and the vocabulary to describe it clearly in a CV, a portfolio or an interview."
       }
     ],
     "ready": [
-      "Offer or appointment letters",
-      "Any experience or relieving letters you already have",
-      "Recent payslips or salary statements",
-      "HR contact details for each past employer",
-      "The requirements list from the organisation asking for proof"
+      "The skill or domain you want to work in",
+      "A note of what you already know, even if it is very little",
+      "The days and times you can attend",
+      "A stable internet connection",
+      "A laptop or desktop for the practical work"
     ],
     "steps": [
       {
-        "title": "Share your purpose",
-        "text": "Tell us what the documents are for and send the requirements you were given."
+        "title": "Tell us your goal",
+        "text": "Share the domain you are interested in, your current level and when you are free."
       },
       {
-        "title": "Get your checklist",
-        "text": "We confirm what is needed, what you already have and what is missing."
+        "title": "Get the programme details",
+        "text": "We send the syllabus, project brief, schedule, trainer and fee in writing."
       },
       {
-        "title": "Request and review",
-        "text": "You send the requests to employers; we review what comes back for completeness."
+        "title": "Enrol and start",
+        "text": "If it fits, you enrol and receive your access details and first-week plan."
       },
       {
-        "title": "Submit your file",
-        "text": "You submit the organised file to the organisation that asked for it."
+        "title": "Build with feedback",
+        "text": "You complete the project in stages, with mentor feedback at every milestone."
       }
     ],
-    "extra": {
-      "title": "What if an employer has closed?",
-      "html": "<p>When a company has shut down or does not respond, some organisations accept other evidence of employment, such as payslips or salary credits in bank statements. Whether that is acceptable is decided by the organisation reviewing your application, not by us. We will help you ask them what they accept and prepare it accurately.</p>"
-    },
+    "extra": null,
     "faqs": [
       {
-        "q": "Can Career Consultancy issue an experience letter for me?",
-        "a": "No. Experience and relieving letters must come from your employer or an organisation it has authorised. We help you request, check and organise those genuine documents."
+        "q": "What does real time project training mean?",
+        "a": "It means you learn by working on a realistic assignment, with a brief, deadlines and review, similar to what a junior team member might be given. It is training work, not paid employment, and we describe it that way."
       },
       {
-        "q": "How long does it take to get my documents?",
-        "a": "It depends mainly on how quickly each employer responds. We will give you an estimate once we know how many employers are involved and what has already been requested."
+        "q": "Is the training live or recorded?",
+        "a": "That depends on the track. The format is stated in the programme details you receive before you enrol."
       },
       {
-        "q": "Can you contact my former employer for me?",
-        "a": "In most cases the request is stronger when it comes from you as the former employee. We help you write it and follow up, and we will discuss other arrangements during your consultation."
+        "q": "I am a complete beginner. Can I join a project track?",
+        "a": "Often yes, after a short foundation stage. We ask about your level first and tell you plainly if some preparation would help you get more from the project."
+      },
+      {
+        "q": "Will I get a certificate or a job at the end?",
+        "a": "No one can promise a job. If a certificate is offered, we tell you who issues it and what it represents before you enrol."
       }
     ],
     "related": [
-      "visa-services",
-      "online-certifications"
+      "experience-certificate",
+      "visa-documentation"
     ],
-    "art_label": "Two people reviewing and signing paperwork together at a desk"
+    "art_label": "A student smiling as she takes notes and studies online on her laptop",
+    "banner": {
+      "src": "training-banner.jpg",
+      "alt": "A presenter explaining a project plan at a whiteboard to two colleagues",
+      "caption": "Build something real, with a mentor reviewing every milestone.",
+      "formHeading": "Tell us what you want to build",
+      "formLede": "Share the skill you are after and your current level. We reply in writing with the programme details, schedule and fee before you enrol.",
+      "formImage": {
+        "src": "training-enquiry.jpg",
+        "alt": "A learner smiling as she writes notes beside her laptop"
+      },
+      "next": [
+        "We reply in writing, usually with a few questions about your level and goals.",
+        "You receive the syllabus, project brief, schedule, trainer and fee before you enrol.",
+        "If it fits, you enrol and receive your access details."
+      ]
+    }
   },
   {
-    "slug": "visa-services",
-    "num": "02",
-    "name": "Visa Services",
-    "short": "Support understanding official requirements, preparing documents and completing visa forms carefully.",
-    "title": "Visa Application Support | Career Consultancy",
-    "meta": "Independent visa application support: understand official requirements, build your document checklist and complete forms carefully. No approval guarantees.",
-    "h1": "Visa application support",
-    "intro": "Every country sets its own visa rules, and they change often. We help you read the official requirements for your destination and visa type, prepare your documents in order, and complete forms carefully, so your application reflects your situation accurately.",
+    "slug": "visa-documentation",
+    "name": "Visa Documentation",
+    "short": "We do not offer visas. We help with the documentation you need to apply for one: reading official requirements, organising documents and completing forms carefully.",
+    "title": "Visa Documentation Support | Career Consultancy",
+    "meta": "Visa documentation support, not visa issuance: we help you understand official requirements, organise documents and complete forms. No approval guarantees.",
+    "h1": "Visa documentation support",
+    "intro": "We do not offer or issue visas. We help you with the documentation needed to apply for one. A visa file is judged on how complete, consistent and truthful it is, so we help you read the official requirements for your destination and visa type, gather and order your documents, and complete the forms carefully.",
     "audience": [
-      "First-time applicants who want help understanding official requirements",
-      "Professionals and students preparing employment or study-related applications",
-      "Families who want a second pair of eyes before submitting"
+      "First-time applicants who find the official requirement lists confusing",
+      "Professionals and students preparing work or study applications",
+      "Families who want a second pair of eyes on the file before submitting"
     ],
     "facts": [
       {
-        "label": "Delivery",
-        "value": "Online"
+        "label": "Our role",
+        "value": "Documentation help, not visas"
       },
       {
         "label": "Decision made by",
@@ -138,7 +153,7 @@ export const SERVICES = [
         "value": "Paid separately"
       }
     ],
-    "notice": "Career Consultancy is an independent consultancy. We are not an embassy, consulate or government body, and we cannot influence decisions. We do not guarantee approval, provide immigration legal advice, or act as your authorised representative. Requirements depend on your destination, visa type and the authorities concerned.",
+    "notice": "We do not offer, sell or issue visas. We only assist with the documentation required to apply for one. Career Consultancy is an independent consultancy: we are not an embassy, consulate or government body, and we cannot influence decisions. We do not guarantee approval, provide immigration legal advice, or act as your authorised representative. Requirements depend on your destination, visa type and the authorities concerned.",
     "scope": [
       {
         "title": "Reading the official requirements",
@@ -150,11 +165,11 @@ export const SERVICES = [
       },
       {
         "title": "Form-filling assistance",
-        "text": "We help you complete application forms accurately. You review every answer and submit and sign the application yourself."
+        "text": "We help you complete application forms accurately. You review every answer, and you submit and sign the application yourself."
       },
       {
         "title": "A pre-submission review",
-        "text": "Before you submit, we check that the documents listed in the requirements are present, current and consistent with your form."
+        "text": "Before you submit, we check that the documents the requirements list are present, current and consistent with your form."
       }
     ],
     "ready": [
@@ -196,6 +211,10 @@ export const SERVICES = [
         "a": "No. Only the relevant authority decides on an application, and no consultancy can promise an outcome. Our role is to help you prepare a complete and accurate application."
       },
       {
+        "q": "Do you provide visas?",
+        "a": "No. We do not offer or issue visas. We assist only with the documentation required to apply for one, such as reading the official requirements, organising your documents and completing forms for you to sign and submit."
+      },
+      {
         "q": "Are official visa fees included in your fee?",
         "a": "No. Official government, appointment and service-centre fees are set by those bodies and are paid separately. Our own fee is quoted to you in writing before you proceed."
       },
@@ -205,24 +224,39 @@ export const SERVICES = [
       }
     ],
     "related": [
-      "experience-documents",
-      "online-training"
+      "experience-certificate",
+      "real-time-project-training"
     ],
-    "art_label": "A passport and boarding passes resting on a laptop, ready for a visa application"
+    "art_label": "A passport and boarding passes resting on a laptop, ready for a visa application",
+    "banner": {
+      "src": "visa-banner.jpg",
+      "alt": "A passport and two boarding passes resting on a closed laptop",
+      "caption": "Your documents, in order, before you submit.",
+      "formHeading": "Tell us where you are headed",
+      "formLede": "Share your destination, visa type and travel dates. We reply in writing with the scope, timeline and fee before anything starts.",
+      "formImage": {
+        "src": "visa-enquiry.jpg",
+        "alt": "Two professionals in a one-to-one consultation across a desk by a large window"
+      },
+      "next": [
+        "We reply in writing, usually with a few questions about your plans.",
+        "You receive the scope, timeline and fee before anything starts.",
+        "If you agree, we read the official requirements with you and build your checklist."
+      ]
+    }
   },
   {
-    "slug": "online-certifications",
-    "num": "03",
-    "name": "Online Certifications",
-    "short": "Guidance choosing a credible online certification and handling the enrolment steps.",
-    "title": "Online Certification Guidance | Career Consultancy",
-    "meta": "Choose an online certification with confidence: we help you check who awards it, what it requires and how to verify it, then guide you through enrolment.",
-    "h1": "Online certification guidance",
-    "intro": "There are thousands of online certificates, and they are not all equal. We help you find out who awards a certification, what it involves, and whether it fits your goal, then guide you through registration with the provider.",
+    "slug": "experience-certificate",
+    "name": "Experience Certificate",
+    "short": "Help requesting, checking and organising genuine experience certificates from the employers who issued them.",
+    "title": "Experience Certificate Assistance | Career Consultancy",
+    "meta": "Help requesting a genuine experience certificate and relieving letter from your former employer, checking details and organising your work-history file.",
+    "h1": "Experience certificate assistance",
+    "intro": "New employers, visa authorities and universities often ask you to prove your past work with an experience certificate. We help you find out exactly what is required, request the right letters from the employers who issue them, check the details, and arrange everything into a clear file you can submit with confidence.",
     "audience": [
-      "Early-career professionals building a first credential",
-      "Experienced professionals adding a specialist skill",
-      "Anyone asked to hold a particular certification for a role"
+      "Professionals changing jobs whose new employer has asked for work-history proof",
+      "Applicants for overseas jobs, visas or study programmes that require employment evidence",
+      "People returning to work after a break who need to trace older records"
     ],
     "facts": [
       {
@@ -230,188 +264,121 @@ export const SERVICES = [
         "value": "Online"
       },
       {
-        "label": "Certificate awarded by",
-        "value": "The provider"
+        "label": "Certificate issued by",
+        "value": "Your employer"
       },
       {
         "label": "Fees",
         "value": "Quoted in writing first"
       },
       {
-        "label": "Exam fees",
-        "value": "Set by the provider"
+        "label": "Timeline",
+        "value": "Depends on employer response"
       }
     ],
-    "notice": "We do not issue certificates and we do not claim any affiliation with an awarding body unless it is stated on this page. Certificates are awarded by the organisation that runs the programme or exam, and how widely a certificate is recognised varies by employer and country.",
+    "notice": "We do not create, alter, backdate or issue experience certificates, relieving letters, payslips or any employment record, and we never answer verification requests on an employer's behalf. Only your employer, or an organisation it has authorised, can issue these documents. If a record cannot be obtained, we will say so plainly and discuss legitimate alternatives.",
     "scope": [
       {
-        "title": "Matching options to your goal",
-        "text": "We discuss the role or skill you are aiming for and shortlist certification pathways that fit it."
+        "title": "A checklist for your purpose",
+        "text": "We read what the organisation asking for proof requires and turn it into a specific list: which letters, which dates, and what details each must show."
       },
       {
-        "title": "Checking the awarding body",
-        "text": "For each option we identify who awards it and how an employer can verify a certificate you earn, so you know what you are paying for."
+        "title": "Requests to former employers",
+        "text": "We help you draft a clear, courteous request to HR for your experience certificate or relieving letter, with the details they need to find your record."
       },
       {
-        "title": "Explaining requirements",
-        "text": "We summarise eligibility, exam format, renewal rules and fees as published by the provider."
+        "title": "A consistency review",
+        "text": "We check the documents you already hold for gaps and mismatches, such as joining date, designation and signatory, so you can ask the issuer to correct them."
       },
       {
-        "title": "Registration support",
-        "text": "We guide you through creating your account, registering and scheduling with the provider."
+        "title": "An organised work-history file",
+        "text": "We arrange your records in a logical order with a short covering summary, ready to upload or submit."
       }
     ],
     "ready": [
-      "The role or skill you are aiming for",
-      "Your current qualifications and experience",
-      "Your budget and the time you can commit each week",
-      "The ID documents the provider asks for at registration"
+      "Offer or appointment letters",
+      "Any experience or relieving letters you already have",
+      "Recent payslips or salary statements",
+      "HR contact details for each past employer",
+      "The requirements list from the organisation asking for proof"
     ],
     "steps": [
       {
-        "title": "Describe your goal",
-        "text": "Tell us the role, skill or requirement you are working towards."
+        "title": "Share your purpose",
+        "text": "Tell us what the certificate is for and send the requirements you were given."
       },
       {
-        "title": "Compare pathways",
-        "text": "We shortlist options and explain who awards each and what it involves."
+        "title": "Get your checklist",
+        "text": "We confirm what is needed, what you already have and what is missing."
       },
       {
-        "title": "Register",
-        "text": "You choose a pathway and we guide you through registration with the provider."
+        "title": "Request and review",
+        "text": "You send the requests to your employers; we review what comes back for completeness."
       },
       {
-        "title": "Prepare and sit",
-        "text": "You study and sit the assessment set by the provider."
+        "title": "Submit your file",
+        "text": "You submit the organised file to the organisation that asked for it."
       }
     ],
     "extra": {
-      "title": "How to check a certificate is genuine",
-      "html": "<p>A credible certification names its awarding organisation clearly and gives employers a way to verify certificates, such as a public register or a verification code. If neither exists, treat the certificate with caution. We show you how to check this for any option you are considering.</p>"
+      "title": "What if an employer has closed?",
+      "html": "<p>When a company has shut down or does not respond, some organisations accept other genuine evidence of employment, such as payslips or salary credits in bank statements. Whether that is acceptable is decided by the organisation reviewing your application, not by us. We will help you ask them what they accept and prepare it accurately.</p>"
     },
     "faqs": [
       {
-        "q": "Are the certifications you suggest accredited?",
-        "a": "That depends on the provider. We tell you who awards each certification and how to verify it, and we never describe a certificate as accredited or officially recognised unless that can be confirmed."
+        "q": "Can Career Consultancy issue an experience certificate for me?",
+        "a": "No. An experience certificate must come from an employer you actually worked for, or an organisation it has authorised. We help you request, check and organise those genuine documents."
       },
       {
-        "q": "Do you guarantee I will pass?",
-        "a": "No. The assessment is set and marked by the provider. We help you understand what it requires and plan your preparation."
+        "q": "How long does it take to get my certificate?",
+        "a": "It depends mainly on how quickly each employer responds. We will give you an estimate once we know how many employers are involved and what has already been requested."
       },
       {
-        "q": "Will a certification get me a job?",
-        "a": "A relevant certification can help you show a skill, but it does not guarantee a job or a salary. We will be honest about what a particular certificate is likely to add."
+        "q": "Can you contact my former employer for me?",
+        "a": "In most cases the request is stronger when it comes from you as the former employee. We help you write it and follow it up, and we will discuss other arrangements during your consultation."
+      },
+      {
+        "q": "Can you help if my certificate has a wrong date or designation?",
+        "a": "Yes. We help you spot the mismatch and write to the issuer asking for a corrected letter. We never edit the document ourselves."
       }
     ],
     "related": [
-      "online-training",
-      "experience-documents"
+      "visa-documentation",
+      "real-time-project-training"
     ],
-    "art_label": "A graduate holding a rolled certificate tied with a red ribbon"
-  },
-  {
-    "slug": "online-training",
-    "num": "04",
-    "name": "Online Training",
-    "short": "Live and self-paced online learning, with full programme details shared before you enrol.",
-    "title": "Online Training Programmes | Career Consultancy",
-    "meta": "Online training you can fit around work or study. Ask about current programmes and get the syllabus, schedule, trainer and fee in writing before you enrol.",
-    "h1": "Online training programmes",
-    "intro": "Online training lets you build practical skills around your work and study. Before you enrol in anything, you receive the syllabus, schedule, duration, trainer details and fee in writing, so you know exactly what you are signing up for.",
-    "audience": [
-      "Working professionals who need flexible schedules",
-      "Students preparing for their first role",
-      "Anyone preparing for a certification who wants structured learning"
-    ],
-    "facts": [
-      {
-        "label": "Delivery",
-        "value": "Online"
+    "art_label": "Two people reviewing and signing paperwork together at a desk",
+    "banner": {
+      "src": "experience-certificate-banner.jpg",
+      "alt": "Close-up of two people at a desk, one signing a document while the other points to the line to check",
+      "caption": "Real certificates, from the people who issue them, checked line by line before you submit.",
+      "formHeading": "Tell us what you need to prove",
+      "formLede": "Share your purpose and the employers involved. We reply in writing with the scope, timeline and fee before anything starts.",
+      "formImage": {
+        "src": "experience-enquiry.jpg",
+        "alt": "A person filing papers into a ring binder at a tidy desk"
       },
-      {
-        "label": "Format",
-        "value": "Confirmed per programme"
-      },
-      {
-        "label": "Fees",
-        "value": "Quoted in writing first"
-      },
-      {
-        "label": "Before enrolling",
-        "value": "Full details in writing"
-      }
-    ],
-    "notice": "Programme details, including topics, schedule, duration, trainer and fee, are confirmed with you in writing before enrolment. Training builds skills; it does not guarantee a job, promotion or exam result.",
-    "scope": [
-      {
-        "title": "Programme matching",
-        "text": "Tell us what you want to learn and why. We tell you which current programme fits, or that none does."
-      },
-      {
-        "title": "Clear programme details",
-        "text": "You receive the syllabus, schedule, duration, trainer profile, fee and refund terms before enrolling."
-      },
-      {
-        "title": "Online delivery",
-        "text": "Sessions are delivered online. Depending on the programme, this may be live classes, recorded lessons, practice tasks, or a mix."
-      },
-      {
-        "title": "Support while you learn",
-        "text": "You have a point of contact for questions about schedules, access and assignments."
-      }
-    ],
-    "ready": [
-      "The skill or topic you want to learn",
-      "The days and times you are available",
-      "A stable internet connection",
-      "A laptop or desktop, if the programme includes practical work"
-    ],
-    "steps": [
-      {
-        "title": "Tell us what you want to learn",
-        "text": "Share the topic, your current level and your availability."
-      },
-      {
-        "title": "Receive programme details",
-        "text": "We send the syllabus, schedule, trainer and fee in writing."
-      },
-      {
-        "title": "Enrol",
-        "text": "If it fits, you enrol and receive your access details."
-      },
-      {
-        "title": "Learn online",
-        "text": "Attend sessions, complete practice work and ask questions as you go."
-      }
-    ],
-    "extra": null,
-    "faqs": [
-      {
-        "q": "Is the training live or recorded?",
-        "a": "It depends on the programme. The format is stated in the programme details you receive before enrolling."
-      },
-      {
-        "q": "Will I receive a certificate?",
-        "a": "If a programme includes a certificate, we tell you who issues it and what it represents before you enrol. We will not describe it as accredited unless it is."
-      },
-      {
-        "q": "Can I attend on my phone?",
-        "a": "Many live sessions work on a phone, but practical tasks are usually easier on a laptop or desktop. Each programme's requirements are listed in its details."
-      }
-    ],
-    "related": [
-      "online-certifications",
-      "visa-services"
-    ],
-    "art_label": "A student smiling as she takes notes and studies online on her laptop"
+      "next": [
+        "We reply in writing, usually with a few questions about your purpose and employers.",
+        "You receive the scope, timeline and fee before anything starts.",
+        "If you agree, we build your checklist and request kit together."
+      ]
+    }
   }
 ];
+
+// The order the services appear across the whole site (header, footer, home, city pages, forms).
+// Experience certificate always comes first. Numbers follow the order, so reordering here is enough.
+const SERVICE_ORDER = ['experience-certificate', 'visa-documentation', 'real-time-project-training'];
+export const SERVICES = SERVICE_ORDER.map((slug, i) => ({
+  ...SERVICE_LIST.find((s) => s.slug === slug),
+  num: String(i + 1).padStart(2, '0'),
+}));
 
 export const SERVICE_BY_SLUG = Object.fromEntries(SERVICES.map((s) => [s.slug, s]));
 export const serviceUrl = (slug) => `/services/${slug}/`;
 
 // Sub-services (the detail pages under each main service) live in their own data files.
-export const SUBSERVICES = [...VISA_SUBSERVICES, ...EXPERIENCE_SUBSERVICES, ...TRAINING_SUBSERVICES];
+export const SUBSERVICES = [...EXPERIENCE_SUBSERVICES, ...VISA_SUBSERVICES, ...TRAINING_SUBSERVICES];
 export const subServiceUrl = (sub) => `/services/${sub.parent}/${sub.slug}/`;
 export const subServicesOf = (parentSlug) => SUBSERVICES.filter((x) => x.parent === parentSlug);
 

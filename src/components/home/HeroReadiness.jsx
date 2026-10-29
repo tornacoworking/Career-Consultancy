@@ -6,7 +6,7 @@ import ConsultLink from '../ConsultLink.jsx';
 import { SERVICES } from '../../data/services.js';
 
 const MAX_ITEMS = 4;
-const SHORT = { 'experience-documents': 'Documents', 'visa-services': 'Visa', 'online-certifications': 'Certification', 'online-training': 'Training' };
+const SHORT = { 'real-time-project-training': 'Training', 'visa-documentation': 'Visa', 'experience-certificate': 'Experience certificate' };
 const verdict = (n, total) => (n === 0 ? 'Tick what you already have.' : n === total ? 'You have everything. Send your enquiry.' : `${total - n} left to gather. We can help with that.`);
 
 export default function HeroReadiness() {

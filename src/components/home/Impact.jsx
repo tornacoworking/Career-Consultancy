@@ -3,10 +3,10 @@ import { SAMPLE_DATA, STATS } from '../../data/site.js';
 
 export default function Impact() {
   return (
-    <section className="on-dark relative overflow-hidden bg-ink py-[clamp(3.5rem,7vw,6rem)] text-paper" aria-labelledby="impact-h">
+    <section className="on-dark relative overflow-hidden bg-ink py-[clamp(1.875rem,4.5vw,3.375rem)] text-paper" aria-labelledby="impact-h">
       <span aria-hidden="true" className="pointer-events-none absolute -top-[40%] -right-[12%] aspect-square w-[clamp(280px,40vw,560px)] rounded-full bg-brand opacity-10" />
       <div className="wrap relative">
-        <div className="mb-[clamp(2.5rem,5vw,4rem)] grid max-w-[50rem] justify-items-center gap-4 text-center lg:justify-items-start lg:text-left">
+        <div className="mb-[clamp(1.5rem,3.5vw,2.5rem)] grid max-w-[50rem] justify-items-center gap-4 text-center lg:justify-items-start lg:text-left">
           <Eyebrow>Our impact</Eyebrow>
           <SampleBadge show={SAMPLE_DATA} />
           <h2 id="impact-h" className="h-section" data-spotlight>

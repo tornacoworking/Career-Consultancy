@@ -11,7 +11,7 @@ import { Link } from '../lib/router.jsx';
 import { useConsult } from '../lib/consult.jsx';
 import { CITY_BY_SLUG, POPULAR_CITIES, PUBLISHED_CITIES, cityUrl, searchCities } from '../data/cities.js';
 
-const CITY_SECTIONS = [['Visa services', 'visa'], ['Experience documents', 'documents'], ['Training', 'training']];
+const CITY_SECTIONS = [['Experience certificate', 'documents'], ['Visa documentation', 'visa'], ['Project training', 'training']];
 
 function SelectedCity({ city, onClear }) {
   return (
