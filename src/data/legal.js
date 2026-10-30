@@ -147,7 +147,7 @@ export const LEGAL_PAGES = [
       },
       {
         "title": "Locations",
-        "html": "<p>Our services are delivered online. City pages describe how our guidance applies to people in that city. They do not mean we have an office there.</p>"
+        "html": "<p>Our services are delivered online. City pages describe how our guidance applies to people in that city.</p>"
       },
       {
         "title": "Information on this website",

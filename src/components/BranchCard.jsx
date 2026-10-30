@@ -1,5 +1,5 @@
 /*
- * One card with every way to reach us: phone, email and the main branch address, each on its own row with an
+ * One card with every way to reach us: phone, email and the branch address when one is set, each on its own row with an
  * icon and its own action. Used on the contact, about and Pune pages so the details read the same everywhere.
  */
 import { useRef } from 'react';

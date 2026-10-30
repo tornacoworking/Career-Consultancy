@@ -116,7 +116,7 @@ export const RICH = {
       image: 'training-locations.jpg',
       alt: 'A trainer explaining a plan at a whiteboard to a small group',
       heading: 'Learn online, wherever you are',
-      text: 'The training is delivered online, so you can join from anywhere in India. The city pages below describe the local picture for learners there. Our main branch is in Baner, Pune. We do not have a classroom or office in the other cities unless a programme’s details say so.',
+      text: 'The training is delivered online, so you can join from anywhere in India. The city pages below describe the local picture for learners there.',
       points: [
         'Live and recorded formats, confirmed for each programme',
         'The same written syllabus, schedule and fee in every city',
@@ -252,7 +252,7 @@ export const RICH = {
       image: 'visa-locations.jpg',
       alt: 'A traveller with a suitcase walking down a bright airport corridor',
       heading: 'Apply from anywhere in India',
-      text: 'This service is delivered online, so you can use it from anywhere in India. The city pages below describe the local picture for applicants there. Our main branch is in Baner, Pune. We do not have an office in the other cities.',
+      text: 'This service is delivered online, so you can use it from anywhere in India. The city pages below describe the local picture for applicants there.',
       points: [
         'Consultation by phone, email or video, at times that suit you',
         'The same written scope, timeline and fee in every city',

@@ -120,10 +120,6 @@ export const GENERAL_FAQS = [
     "a": "Timelines vary by service. Some steps depend on employers, trainers or authorities, so we give you a realistic estimate and explain which parts are outside our control."
   },
   {
-    "q": "Do I need to visit an office?",
-    "a": "No. Our services are delivered online, so you can work with us from wherever you are. If you would like to meet in person, our main branch is in Baner, Pune. Please contact us first so we can arrange a time."
-  },
-  {
     "q": "Can you guarantee a result?",
     "a": "No. We cannot guarantee visa approvals, employer responses or jobs. We promise to deliver the assistance we agree with you, clearly and carefully."
   },

@@ -30,7 +30,7 @@ export default function About() {
           <h2 id="never-h" className="mt-1 mb-4 text-title">What we will never do</h2>
           <ul className="ticks grid gap-3 md:grid-cols-2 md:gap-x-10">{COMMITMENTS.map((c) => <li key={c}>{c}</li>)}</ul>
         </section>
-        <BranchCard heading="Where to find us" cta className="lg:max-w-[40rem]" />
+        <BranchCard heading="Contact us directly" cta className="lg:max-w-[40rem]" />
       </div>
       <CtaBand />
     </>

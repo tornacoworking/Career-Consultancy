@@ -59,11 +59,6 @@ export default function CityPage({ city }) {
             </div>
           </div>
           <div className="grid gap-4 border border-line bg-white p-[clamp(1.1rem,3vw,1.5rem)]">
-            <p className="border-l-[3px] border-brand pl-4 text-[.9375rem] text-muted">
-              {city.slug === 'pune'
-                ? 'Our main branch is in Baner, Pune, and we also help people by phone, email and video.'
-                : `Career Consultancy works online. Our main branch is in Pune. We help people in ${city.name} by phone, email and video, and we do not claim a physical office there.`}
-            </p>
             <nav aria-label="Jump to a section">
               <p className="label-mono mb-2 text-brand-ink">Jump to</p>
               <ul className="flex flex-wrap gap-2">
@@ -110,7 +105,7 @@ export default function CityPage({ city }) {
         })}
       </div>
 
-      {city.slug === 'pune' && <div className="wrap pb-[clamp(1.375rem,3.5vw,2.875rem)]"><BranchCard heading="Our main branch in Baner, Pune" cta className="lg:max-w-[40rem]" /></div>}
+      {city.slug === 'pune' && <div className="wrap pb-[clamp(1.375rem,3.5vw,2.875rem)]"><BranchCard heading="Contact us directly" cta className="lg:max-w-[40rem]" /></div>}
       <DocumentsSection city={city.slug} place={city.name} />
       <WhatElse city={city.slug} place={city.name} />
 

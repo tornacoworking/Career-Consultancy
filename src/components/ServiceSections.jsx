@@ -235,7 +235,7 @@ export function LocationsServed() {
     <div className="grid gap-8">
       <Split image="experience-locations.jpg" alt="Two professionals in a one-to-one consultation across a desk by a large window">
         <h3 className="text-xl">Online, wherever you are</h3>
-        <p>This service is delivered online, so you can use it from anywhere in India. The city pages below describe the local picture, such as the kinds of employers people there work for. Our main branch is in Baner, Pune. We do not have an office in the other cities.</p>
+        <p>This service is delivered online, so you can use it from anywhere in India. The city pages below describe the local picture, such as the kinds of employers people there work for.</p>
         <Ticks items={['Consultation by phone, email or video, at times that suit you', 'The same written scope, timeline and fee in every city', 'Requests written for employers wherever they are based, including outside India']} />
       </Split>
       <div className="grid gap-6">

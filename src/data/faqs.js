@@ -7,12 +7,6 @@
 export const cityFaqs = (city) => [
   city.faq,
   {
-    q: `Do you have an office in ${city.name}?`,
-    a: city.slug === 'pune'
-      ? 'Yes. Our main branch is in Baner, Pune, and you can also work with us online by phone, email or video. Please contact us first so we can arrange a time.'
-      : `Our main branch is in Baner, Pune. We do not claim a physical office in ${city.name}, but you can talk to us by phone, email or video wherever you are.`,
-  },
-  {
     q: `Can you guarantee a visa, document or job for someone in ${city.name}?`,
     a: 'No. Visa decisions rest with the destination authority, documents are issued only by your real employers, and training does not guarantee a job. We help you prepare accurately.',
   },
