@@ -77,23 +77,15 @@ export function DestinationPicker({ sub }) {
 }
 
 /** Genuine records versus fabrication, for the experience-document pages. */
-export function GenuineCompare({ help = GENUINE_VS_FABRICATED.genuine, never = GENUINE_VS_FABRICATED.fabricated }) {
-  const cols = [
-    ['What we help with', help, 'ticks'],
-    ['What we never do', never, 'crosses'],
-  ];
+export function GenuineCompare({ help = GENUINE_VS_FABRICATED.genuine }) {
+  // The old "What we never do" column was removed on request. The honest-records promise stays in the
+  // service notice, the FAQs and the "Genuine records only" intro above this block.
   return (
-    <div className="grid gap-8 md:grid-cols-2">
-      {cols.map(([title, items, kind]) => (
-        <div key={title} className={`grid content-start gap-3 border-t-2 pt-4 ${kind === 'ticks' ? 'border-ink' : 'border-error'}`}>
-          <h3 className="text-xl">{title}</h3>
-          <ul className={kind === 'ticks' ? 'ticks' : 'grid gap-3'}>
-            {items.map((t) => (
-              <li key={t} className={kind === 'ticks' ? '' : 'relative pl-7 before:absolute before:left-0 before:font-bold before:text-error before:content-["✕"]'}>{t}</li>
-            ))}
-          </ul>
-        </div>
-      ))}
+    <div className="grid gap-3 border-t-2 border-ink pt-4">
+      <h3 className="text-xl">What we help with</h3>
+      <ul className="ticks grid gap-x-10 md:grid-cols-2">
+        {help.map((t) => <li key={t}>{t}</li>)}
+      </ul>
     </div>
   );
 }

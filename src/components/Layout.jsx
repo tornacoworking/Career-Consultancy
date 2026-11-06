@@ -4,6 +4,7 @@ import Footer from './Footer.jsx';
 import SpotlightCursor from './SpotlightCursor.jsx';
 import Breadcrumbs from './Breadcrumbs.jsx';
 import MobileActionBar from './MobileActionBar.jsx';
+import WhatsAppFloat from './WhatsAppFloat.jsx';
 import { ConsultProvider } from '../lib/consult.jsx';
 
 export default function Layout({ crumbs, children }) {
@@ -18,6 +19,7 @@ export default function Layout({ crumbs, children }) {
       </main>
       <Footer />
       <MobileActionBar />
+      <WhatsAppFloat />
       <SpotlightCursor />
     </ConsultProvider>
   );

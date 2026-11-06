@@ -27,7 +27,7 @@ export default function About() {
         </div>
         <section className="border-[1.5px] border-ink bg-white p-[clamp(1.5rem,3vw,2.25rem)]" aria-labelledby="never-h">
           <p className="notice-label">Our commitments</p>
-          <h2 id="never-h" className="mt-1 mb-4 text-title">What we will never do</h2>
+          <h2 id="never-h" className="mt-1 mb-4 text-title">What you can count on</h2>
           <ul className="ticks grid gap-3 md:grid-cols-2 md:gap-x-10">{COMMITMENTS.map((c) => <li key={c}>{c}</li>)}</ul>
         </section>
         <BranchCard heading="Contact us directly" cta className="lg:max-w-[40rem]" />

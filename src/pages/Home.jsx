@@ -1,7 +1,7 @@
 import Hero from '../components/home/Hero.jsx';
-import Audience from '../components/home/Audience.jsx';
+import TrustStrip from '../components/home/TrustStrip.jsx';
 import ServiceFinder from '../components/home/ServiceFinder.jsx';
-import ServiceExplorer from '../components/home/ServiceExplorer.jsx';
+import DocumentsGuide from '../components/home/DocumentsGuide.jsx';
 import ServiceCatalogue from '../components/home/ServiceCatalogue.jsx';
 import ServiceComparison from '../components/home/ServiceComparison.jsx';
 import HomeVisa from '../components/home/HomeVisa.jsx';
@@ -16,31 +16,33 @@ import HomeFaq from '../components/home/HomeFaq.jsx';
 import DocumentsSection from '../components/DocumentsSection.jsx';
 import WhatElse from '../components/WhatElse.jsx';
 import CtaBand from '../components/CtaBand.jsx';
-import { SHOW_SAMPLE_SECTIONS } from '../lib/flags.js';
+import { STATS, TESTIMONIALS } from '../data/site.js';
 
 /*
- * The sections follow the order a visitor thinks in:
- *   arrive -> who it is for -> pick a path -> the services -> the details of each (experience certificate first)
- *   -> how it works -> what we promise -> why us -> proof -> where we work -> questions -> enquire.
+ * Order, written for a first-time visitor (about 90% are freshers):
+ *   hero -> trust -> "what brings you here" -> experience certificate documents -> those documents in plain words
+ *   -> how it works -> every service -> compare -> visa / training detail -> verification -> promises -> proof
+ *   -> cities -> questions -> enquire.
+ * (Audience and ServiceExplorer were removed from the page: they repeated "what brings you here" and the catalogue.)
  */
 export default function Home() {
   return (
     <>
       <Hero />
-      <Audience />
+      <TrustStrip />
       <ServiceFinder />
-      <ServiceExplorer />
+      <DocumentsSection />
+      <DocumentsGuide />
+      <Journey />
       <ServiceCatalogue />
       <ServiceComparison />
-      <DocumentsSection />
       <HomeVisa />
       <HomeTraining />
       <WhatElse />
-      <Journey />
       <Transparency />
       <Benefits />
-      {SHOW_SAMPLE_SECTIONS && <Impact />}
-      {SHOW_SAMPLE_SECTIONS && <Reviews />}
+      {STATS.length > 0 && <Impact />}
+      {TESTIMONIALS.length > 0 && <Reviews />}
       <PopularCities />
       <HomeFaq />
       <CtaBand consult={{}} label="Get Free Consultation" />

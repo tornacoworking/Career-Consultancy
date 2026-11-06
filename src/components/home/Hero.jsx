@@ -2,9 +2,10 @@ import { HeroPhoto } from '../Photo.jsx';
 import HeroReadiness from './HeroReadiness.jsx';
 import CityExplorer from '../CityExplorer.jsx';
 import ConsultLink from '../ConsultLink.jsx';
-import { Arrow, ButtonLink, Eyebrow } from '../ui.jsx';
+import { Arrow, Eyebrow } from '../ui.jsx';
 import { Link } from '../../lib/router.jsx';
 import { SITE } from '../../data/site.js';
+import { WhatsAppIcon, waUrl } from '../WhatsAppFloat.jsx';
 import { SERVICES, serviceUrl } from '../../data/services.js';
 
 export default function Hero() {
@@ -14,19 +15,23 @@ export default function Hero() {
         <div className="grid min-w-0 justify-items-center text-center lg:justify-items-start lg:text-left">
           <Eyebrow>{SITE.tagline}</Eyebrow>
           <h1 id="hero-h" className="mt-5 mb-6 text-hero leading-[.98] font-extrabold tracking-[-0.045em]" data-spotlight>
-            Your goals. Your <span className="accent">next&nbsp;step.</span> Our guidance.
+            Fresher? Build experience <span className="accent">you can prove.</span>
           </h1>
           <p className="lede">
-            Get genuine experience certificates from your past employers, prepare your visa documentation carefully (we do not offer visas, only the documents you need to apply), and build real skills with project training, wherever you are in India.
+            We help freshers get real project experience with a certificate for the work they actually complete. If you have already worked somewhere, we help you get your genuine experience certificate from that employer. Simple steps, fees in writing, nothing hidden.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 lg:justify-start">
             <ConsultLink arrow>Get Free Consultation</ConsultLink>
-            <ButtonLink to="/services/" variant="ghost">Explore Our Services</ButtonLink>
+            {waUrl() && (
+              <a href={waUrl()} target="_blank" rel="noopener" className="btn btn-ghost">
+                <WhatsAppIcon size={20} /> Chat on WhatsApp
+              </a>
+            )}
           </div>
-          <ul className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-1 text-[.875rem] text-muted lg:justify-start" aria-label="How we work">
-            <li>Transparent scope and fees in writing</li>
-            <li>Personal support</li>
-            <li>No approval or job guarantees</li>
+          <ul className="mt-5 grid gap-y-1.5 text-[.9375rem] text-muted" aria-label="How we work">
+            <li><span className="font-bold text-brand-ink">✓ </span>Free first chat. No payment to ask a question</li>
+            <li><span className="font-bold text-brand-ink">✓ </span>You see the fee in writing before you pay</li>
+            <li><span className="font-bold text-brand-ink">✓ </span>No job or visa guarantees. Only honest promises</li>
           </ul>
         </div>
         <div className="relative mx-auto w-full max-w-[560px] min-w-0">

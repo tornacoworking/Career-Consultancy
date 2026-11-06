@@ -1,19 +1,78 @@
 // Generated from the original content and then maintained by hand.
 // Anything marked CONFIRM must be verified by the business owner before launch.
 
+// "What brings you here?" options. Order matters: most visitors are freshers, so that option comes first.
+// CONFIRM with the owner: the fresher option describes a certificate for the project work the person
+// really completes (who issued it, what was built, how long). It must never describe a job they did not do.
 export const NEEDS = [
   {
-    "slug": "experience-certificate",
-    "label": "I need an experience certificate from a past employer"
-  },
-  {
-    "slug": "visa-documentation",
-    "label": "I'm preparing documents for a visa application"
-  },
-  {
+    "key": "fresher",
     "slug": "real-time-project-training",
-    "label": "I want hands-on project experience"
+    "icon": "graduation",
+    "badge": "Most freshers start here",
+    "label": "I'm a fresher (or have a career gap) and want real experience for my resume",
+    "text": "Work on a live project with a mentor. You finish with something real to show: a project you can explain in interviews, and a certificate that honestly states what you built, for how long, and who issued it.",
+    "cta": "Get fresher guidance"
+  },
+  {
+    "key": "employer",
+    "slug": "experience-certificate",
+    "icon": "briefcase",
+    "label": "I have worked before and need an experience certificate from my old employer",
+    "text": "We help you ask your old company the right way, check the letter for mistakes, and organise your papers. The certificate always comes from the employer who issues it.",
+    "cta": "Get certificate help"
+  },
+  {
+    "key": "visa",
+    "slug": "visa-documentation",
+    "icon": "plane",
+    "label": "I'm preparing documents for a visa application",
+    "text": "We turn the official requirement list into a simple checklist and help you organise your documents. We do not issue visas.",
+    "cta": "Get visa document help"
   }
+];
+
+// Documents explained in plain words, for people who have never needed them before.
+export const DOC_GLOSSARY = [
+  {
+    "name": "Experience certificate",
+    "plain": "A letter from a company you worked for. It says your job title, when you joined, when you left and what work you did.",
+    "need": "Asked for by new employers, visa offices and universities."
+  },
+  {
+    "name": "Relieving letter",
+    "plain": "A letter from your old company saying your resignation was accepted and you are free to join somewhere else.",
+    "need": "Most new employers ask for it on your joining day."
+  },
+  {
+    "name": "Offer / appointment letter",
+    "plain": "The letter the company gave you when it hired you. It shows your role, joining date and pay terms.",
+    "need": "Proves when and in what role you started."
+  },
+  {
+    "name": "Payslips",
+    "plain": "The monthly salary slips your company gave you. Usually the last three months are asked for.",
+    "need": "Shows the company name and your salary, month by month."
+  },
+  {
+    "name": "Form 16",
+    "plain": "A yearly tax paper that your employer gives you. It shows salary paid and tax cut for that year.",
+    "need": "Supports your salary and employer details."
+  },
+  {
+    "name": "Bank statement with salary credits",
+    "plain": "Your own bank record showing salary arriving from the company every month.",
+    "need": "A genuine back-up when other papers are missing."
+  }
+];
+
+// What a fresher keeps ready. Mirrors TRAINING_NEEDS in requirements.js, but in everyday language.
+export const FRESHER_READY = [
+  "Your latest resume, even if it is only one page",
+  "Your degree or marksheet details (only for your own reference)",
+  "The skill or field you want to work in, or tell us you are not sure",
+  "A laptop or computer and steady internet",
+  "The days and times you can give each week"
 ];
 
 export const BENEFITS = [
